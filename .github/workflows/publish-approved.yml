@@ -5,16 +5,22 @@ on:
     paths:
       - 'drafts/**'
       - 'scripts/publish-approved.mjs'
+      - '.github/workflows/publish-approved.yml'
+  workflow_run:
+    workflows: ['Approve CapCut tutorial after editorial review']
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: write
   pages: write
   id-token: write
 concurrency:
-  group: pages
+  group: neiropraktika-approved-builder
   cancel-in-progress: false
 jobs:
   publish:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
