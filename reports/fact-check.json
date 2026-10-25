@@ -1,0 +1,151 @@
+{
+  "auditMethod": "Live official-page retrieval + AI claims comparison + exact source-quote matching; not a human fact check",
+  "model": "gpt-4.1-mini",
+  "checkedAt": "2026-10-25T18:06:45.195Z",
+  "total": 7,
+  "blocked": 7,
+  "candidates": 0,
+  "notes": "Passing the automated check does not authorize auto-publishing. Existing publication and human approval gates remain in force.",
+  "results": [
+    {
+      "slug": "chatgpt-excel",
+      "title": "ChatGPT для Excel: как писать формулы и разбирать таблицы",
+      "currentStatus": "approved",
+      "verdict": "blocked",
+      "independentlyHumanReviewed": false,
+      "sources": [
+        {
+          "title": "Анализ данных в ChatGPT — справка OpenAI",
+          "url": "https://help.openai.com/ru-ru/articles/8437071-data-analysis-with-chatgpt",
+          "loaded": false,
+          "error": "Source HTTP 403"
+        },
+        {
+          "title": "Загрузка файлов в ChatGPT — справка OpenAI",
+          "url": "https://help.openai.com/ru-ru/articles/8555545-uploading-files-and-audio-to-chatgpt",
+          "loaded": false,
+          "error": "Source HTTP 403"
+        }
+      ],
+      "issues": [
+        "Источник недоступен: https://help.openai.com/ru-ru/articles/8437071-data-analysis-with-chatgpt",
+        "Источник недоступен: https://help.openai.com/ru-ru/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      ],
+      "checks": []
+    },
+    {
+      "slug": "chatgpt-kartinki",
+      "title": "Как создавать изображения в ChatGPT: от идеи до готового запроса",
+      "currentStatus": "approved",
+      "verdict": "blocked",
+      "independentlyHumanReviewed": false,
+      "sources": [
+        {
+          "title": "Изображения в ChatGPT — OpenAI Help Center",
+          "url": "https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt",
+          "loaded": false,
+          "error": "Source HTTP 403"
+        }
+      ],
+      "issues": [
+        "Источник недоступен: https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt"
+      ],
+      "checks": []
+    },
+    {
+      "slug": "chatgpt-perevod",
+      "title": "Как переводить тексты через ChatGPT: инструкция с примерами",
+      "currentStatus": "approved",
+      "verdict": "blocked",
+      "independentlyHumanReviewed": false,
+      "sources": [
+        {
+          "title": "Возможности ChatGPT — справка OpenAI",
+          "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview",
+          "loaded": false,
+          "error": "Source HTTP 403"
+        }
+      ],
+      "issues": [
+        "Источник недоступен: https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview"
+      ],
+      "checks": []
+    },
+    {
+      "slug": "chatgpt-pismo",
+      "title": "Как написать деловое письмо через ChatGPT: готовые промпты",
+      "currentStatus": "approved",
+      "verdict": "blocked",
+      "independentlyHumanReviewed": false,
+      "sources": [
+        {
+          "title": "Возможности ChatGPT — справка OpenAI",
+          "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview",
+          "loaded": false,
+          "error": "Source HTTP 403"
+        }
+      ],
+      "issues": [
+        "Источник недоступен: https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview"
+      ],
+      "checks": []
+    },
+    {
+      "slug": "chatgpt-plan",
+      "title": "Как составить план дня в ChatGPT: инструкция и шаблон",
+      "currentStatus": "approved",
+      "verdict": "blocked",
+      "independentlyHumanReviewed": false,
+      "sources": [
+        {
+          "title": "Возможности ChatGPT — справка OpenAI",
+          "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview",
+          "loaded": false,
+          "error": "Source HTTP 403"
+        }
+      ],
+      "issues": [
+        "Источник недоступен: https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview"
+      ],
+      "checks": []
+    },
+    {
+      "slug": "chatgpt-ucheba",
+      "title": "Как использовать ChatGPT для учёбы: 12 полезных способов и примеры запросов",
+      "currentStatus": "approved",
+      "verdict": "blocked",
+      "independentlyHumanReviewed": false,
+      "sources": [
+        {
+          "title": "Режим обучения в ChatGPT — OpenAI",
+          "url": "https://help.openai.com/ru-ru/articles/11780217-using-study-mode-in-chatgpt",
+          "loaded": false,
+          "error": "Source HTTP 403"
+        }
+      ],
+      "issues": [
+        "Источник недоступен: https://help.openai.com/ru-ru/articles/11780217-using-study-mode-in-chatgpt"
+      ],
+      "checks": []
+    },
+    {
+      "slug": "reels-script-from-review",
+      "title": "Как превратить отзыв покупателя в сценарий Reels: хук, кадры, озвучка",
+      "currentStatus": "needs_review",
+      "verdict": "blocked",
+      "independentlyHumanReviewed": false,
+      "sources": [
+        {
+          "title": "Официальный обзор возможностей ChatGPT — OpenAI",
+          "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview",
+          "loaded": false,
+          "error": "Source HTTP 403"
+        }
+      ],
+      "issues": [
+        "Источник недоступен: https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
+      ],
+      "checks": []
+    }
+  ]
+}
