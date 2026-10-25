@@ -1,7 +1,7 @@
 {
   "intent": "Как сделать план на день через ChatGPT",
   "slug": "chatgpt-plan",
-  "reviewStatus": "needs_review",
+  "reviewStatus": "approved",
   "title": "Как составить план дня в ChatGPT: инструкция и шаблон",
   "summary": "Чтобы быстро и эффективно составить план на день с помощью ChatGPT, достаточно задать четкий запрос с указанием задач, приоритетов и времени. Например, можно попросить: «Помоги составить план на день с учетом работы, учебы и отдыха». В статье приведены пошаговая инструкция, примеры запросов и шаблон для удобного планирования.",
   "steps": [
@@ -63,7 +63,7 @@
     }
   ],
   "reviewNotes": [
-    "AI review unavailable: missing OPENAI_API_KEY"
+    "Passed structure and model-based editorial review; external fact verification not performed"
   ],
   "reviewMethod": "structure-and-ai-editor-v2"
 }
