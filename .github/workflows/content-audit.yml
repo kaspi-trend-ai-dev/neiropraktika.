@@ -3,6 +3,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: neiropraktika-report-writes
+  cancel-in-progress: false
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -13,15 +16,9 @@ jobs:
           node-version: '22'
       - run: node scripts/audit-content.mjs
       - name: Save audit report in repository
-        run: |
-          git add reports/content-audit.json
-          if ! git diff --cached --quiet; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "Update content audit report"
-            git push
-          fi
+        run: bash scripts/push-report-safely.sh 'Update content audit report' reports/content-audit.json
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: neiropraktika-content-audit
           path: reports/content-audit.json
