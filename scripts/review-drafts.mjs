@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import {practicalIssues,detectTopicCollisions,sourceIssues} from './quality-rules.mjs';
+import {frontierDraftIssues} from './editorial-signal.mjs';
 
 const root='drafts';
 const files=fs.readdirSync(root).filter(f=>f.endsWith('.json')).sort();
@@ -24,6 +25,8 @@ async function editorialReview(d){
  'Ответ только JSON: {"pass": boolean, "reasons": string[], "duplicateOf": string|null, "needsExternalFactCheck": boolean}.',
  'pass=true ТОЛЬКО если статья решает запрос, показывает воспроизводимый конечный продукт, пример входных и выходных данных, применимые шаблоны и проверяемые шаги; поисковый интент не повторяется.',
  'Отклоняй бессодержательные советы, повторяющиеся пункты, выдуманные примеры использования и выдуманные свойства инструментов. Оцени: можно ли следовать инструкции без дополнительных догадок?',
+ 'Это медиа о прорывных возможностях ИИ. ОТКЛОНИ даже формально полезный материал, если он выглядит как обычная инструкция для новичков или пересказывает меню программы.',
+ 'Для материала типа frontier требуй конкретный технологический сдвиг, сравнение с обычным способом, яркий новостной крючок, насыщенный проект и честное разграничение официальных фактов и не проведённых автором тестов.',
  'Для заработка требуй честный сценарий реальной услуги и понятный план действий, но не обещание конкретного дохода.',
  'Если новая статья отвечает на ту же задачу другими словами, duplicateOf=slug и pass=false.',
  'Если есть сведения о текущих ценах, доступности, действующих интерфейсах, законодательстве, характеристиках продуктов, цифры/статистика или неподтвержденные источники, needsExternalFactCheck=true и pass=false.',
@@ -46,6 +49,7 @@ for(const {file,data:d} of drafts){
  if(new Set((d.steps||[]).map(s=>normalize(s.heading))).size!==(d.steps||[]).length)reasons.push('Repeated headings');
  if((d.prompts||[]).some(s=>String(s).length<35))reasons.push('Prompts lack concrete detail');
  if(d.category){
+  reasons.push(...frontierDraftIssues(d));
   reasons.push(...practicalIssues(d));
   // Missing source verification blocks publication after editorial review.
  }
