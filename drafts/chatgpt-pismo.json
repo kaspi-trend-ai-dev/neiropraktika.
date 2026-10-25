@@ -67,6 +67,13 @@
     }
   ],
   "reviewNotes": [
-    "Passed structural and overlap checks; factual accuracy not independently verified"
+    "Passed structural and overlap checks; factual accuracy not independently verified",
+    "Added general official reference; individual claims not independently fact-checked."
+  ],
+  "sources": [
+    {
+      "title": "О ChatGPT — OpenAI",
+      "url": "https://help.openai.com/en/articles/12677804-what-is-chatgpt"
+    }
   ]
 }
