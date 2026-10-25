@@ -91,6 +91,13 @@
     }
   ],
   "reviewNotes": [
-    "Passed structural and overlap checks; factual accuracy not independently verified"
+    "Passed structural and overlap checks; factual accuracy not independently verified",
+    "Added general official reference; individual claims not independently fact-checked."
+  ],
+  "sources": [
+    {
+      "title": "Режим обучения в ChatGPT — OpenAI",
+      "url": "https://help.openai.com/ru-ru/articles/11780217-using-study-mode-in-chatgpt"
+    }
   ]
 }
