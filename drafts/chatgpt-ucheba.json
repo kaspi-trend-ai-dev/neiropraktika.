@@ -92,12 +92,17 @@
   ],
   "reviewNotes": [
     "Passed structural and overlap checks; factual accuracy not independently verified",
-    "Added general official reference; individual claims not independently fact-checked."
+    "Added general official reference; individual claims not independently fact-checked.",
+    "Academy/официальные первоисточники добавлены для проверки; наличие ссылки само по себе не означает проверку достоверности."
   ],
   "sources": [
     {
-      "title": "Режим обучения в ChatGPT — OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/11780217-using-study-mode-in-chatgpt"
+      "title": "Возможности ChatGPT — официальная справка OpenAI",
+      "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
+    },
+    {
+      "title": "Как искать идеи и планировать с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/brainstorming/"
     }
   ]
 }
