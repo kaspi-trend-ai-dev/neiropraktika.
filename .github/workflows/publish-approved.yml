@@ -26,6 +26,8 @@ jobs:
           node-version: '22'
       - name: Build approved articles
         run: node scripts/publish-approved.mjs
+      - name: Verify output before publication
+        run: node scripts/check-publication.mjs
       - name: Commit approved pages
         run: |
           git add -A -- articles.json
