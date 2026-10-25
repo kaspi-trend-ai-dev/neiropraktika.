@@ -20,38 +20,31 @@
     {
       "slug": "chatgpt-perevod",
       "status": "approved",
-      "issues": [
-        "No primary source links"
-      ],
-      "sourceCount": 0,
+      "issues": [],
+      "sourceCount": 1,
       "manualSourceVerified": false
     },
     {
       "slug": "chatgpt-pismo",
       "status": "approved",
       "issues": [
-        "No primary source links",
         "Absolute claim should be scrutinized"
       ],
-      "sourceCount": 0,
+      "sourceCount": 1,
       "manualSourceVerified": false
     },
     {
       "slug": "chatgpt-plan",
       "status": "approved",
-      "issues": [
-        "No primary source links"
-      ],
-      "sourceCount": 0,
+      "issues": [],
+      "sourceCount": 1,
       "manualSourceVerified": false
     },
     {
       "slug": "chatgpt-ucheba",
       "status": "approved",
-      "issues": [
-        "No primary source links"
-      ],
-      "sourceCount": 0,
+      "issues": [],
+      "sourceCount": 1,
       "manualSourceVerified": false
     }
   ]
