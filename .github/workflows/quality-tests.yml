@@ -22,4 +22,5 @@ jobs:
       - name: Run regression checks
         run: |
           node scripts/test-quality.mjs
+          node scripts/test-fact-check.mjs
           node scripts/check-publication.mjs
