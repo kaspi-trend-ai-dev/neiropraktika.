@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import {retrieveOfficialSource,validateFactJudgments} from './fact-check-utils.mjs';
+import {retrieveOfficialSource,validateFactJudgments,sourceSegments} from './fact-check-utils.mjs';
 
 const ALL=process.argv.includes('--all');
 const SINGLE=(process.argv.find(x=>x.startsWith('--slug='))||'').slice(7);
@@ -39,7 +39,7 @@ async function runModel(units,sources,d){
  'Check EACH and EVERY numbered content block separately. Reply with EXACTLY one judgment per id.',
  'Use only ACTUALLY FETCHED official documentation provided here. Do not use your own memory as evidence.',
  'Allowed verdicts: supported, instructional, unsupported, contradicted.',
- 'supported: every specific product/interface claim in this block is directly supported by at least one official source. Include sourceIndex and one DIRECT VERBATIM QUOTE copied from that source of length 26-380 characters (no ellipses, no rewriting). If a block mixes supported and unsupported factual claims, mark unsupported.',
+ 'supported: every material product or interface claim in this block is directly supported by at least one source. Include sourceIndex and a passageIndex from the numbered passages actually provided. The system will fetch the original passage; do not invent quotations. If a block contains both supported and unsupported product claims, mark unsupported.',
  'When documentation confirms a GENERAL ability (e.g. draft or rewrite text), that also supports ordinary examples like drafting a short script, crafting five headlines, adapting a letter tone, or requesting ten words. The source need not literally mention each illustrative format or number. Do not incorrectly mark these as unsupported merely because an example was not quoted verbatim.',
  'Distinguish a user-given workflow, hypothetical worked example and recommendation from a claim that a PRODUCT HAS a specific capability or UI. Ordinary advice about how to use a general language model can be instructional. But explicit product capabilities must have real evidence, not be disguised as instructional.',
  'Avoid false negatives: unsupported means the documentation does not substantiate a material external fact, NOT that it does not repeat the article title or every common-sense example.',
@@ -47,9 +47,9 @@ async function runModel(units,sources,d){
  'unsupported: any significant factual product claim not proven by the supplied sources. contradicted: explicitly refuted by the sources.',
  'Do not infer rights, monetization rates, guaranteed outcomes or exact menu/button positions from general documentation.',
  'For unsupported/contradicted blocks, state the problem and a recommended correction in note.',
- 'Reply only JSON {"checks":[{"id":"...","verdict":"supported|instructional|unsupported|contradicted","claim":"short Russian description","sourceIndex":0,"quote":"verbatim source excerpt","note":"brief Russian rationale"}]}.',
+ 'Reply only JSON {"checks":[{"id":"...","verdict":"supported|instructional|unsupported|contradicted","claim":"short Russian description","sourceIndex":0,"passageIndex":0,"note":"brief Russian rationale"}]}.',
  'Content blocks: '+JSON.stringify(units),
- 'Sources: '+JSON.stringify(sources.map((s,i)=>({sourceIndex:i,url:s.url,text:s.text.slice(0,17000)}))),
+ 'Sources: '+JSON.stringify(sources.map((s,i)=>({sourceIndex:i,url:s.url,passages:sourceSegments(s.text).slice(0,40).map((passage,j)=>({passageIndex:j,text:passage}))}))),
  'Never approve automatically or claim manual verification.'
  ].join('\n');
  const response=await fetch('https://api.openai.com/v1/chat/completions',{
