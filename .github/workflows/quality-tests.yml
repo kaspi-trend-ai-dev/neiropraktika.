@@ -20,4 +20,6 @@ jobs:
         run: |
           for f in scripts/*.mjs; do node --check "$f"; done
       - name: Run regression checks
-        run: node scripts/test-quality.mjs
+        run: |
+          node scripts/test-quality.mjs
+          node scripts/check-publication.mjs
