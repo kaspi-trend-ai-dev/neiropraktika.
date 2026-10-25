@@ -115,5 +115,25 @@ const report={
 };
 fs.mkdirSync('reports',{recursive:true});
 fs.writeFileSync('reports/fact-check.json',JSON.stringify(report,null,2)+'\n');
+const readable=[
+ '# Аудит достоверности статей — НейроПрактика',
+ '',
+ '**Последняя проверка:** '+report.checkedAt,
+ '',
+ 'Проверено: **'+report.total+'** · Источники недоступны: **'+report.sourceUnavailable+'** · Источники доступны частично: **'+report.partialSources+'** · Замечания к содержанию: **'+report.factBlocked+'** · Возможна ручная проверка: **'+report.candidates+'**.',
+ '',
+ '> Автоматическая проверка не означает редакционного одобрения. Статьи со статусом source_unavailable / partial_sources / blocked публиковать нельзя.',
+ '',
+ '| Статья | Итог | Проблем |',
+ '|---|---|---:|',
+ ...results.map(r=>'| '+String(r.title||r.slug).replace(/\\|/g,' ')+' | '+r.verdict+' | '+r.issues.length+' |'),
+ '',
+ '## Что нужно исправить',
+ '',
+ ...results.flatMap(r=>['### '+r.title,'**Статус:** '+r.verdict,...(r.issues.length?r.issues.map(s=>'- '+s):['- Критических замечаний по доступным первоисточникам нет; нужна редакционная проверка.']),'']),
+ 'Полные технические доказательства: \`reports/fact-check.json\`.',
+ ''
+].join('\n');
+fs.writeFileSync('reports/FACT-STATUS.md',readable);
 console.log('Fact audit complete:',report.total,'checked,',report.blocked,'blocked,',report.candidates,'candidate(s) for manual review');
 if(!selected.length)console.log('Nothing to check: use --all to audit published content');
