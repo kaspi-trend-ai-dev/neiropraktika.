@@ -31,8 +31,8 @@ jobs:
         run: node scripts/fact-check.mjs --all
       - name: Report summary
         run: |
-          node -e "const r=require('./reports/fact-check.json');console.log('Fact-checked:',r.total,'Blocked:',r.blocked,'Candidates:',r.candidates);"
-          node -e "const r=require('./reports/fact-check.json');const lines=['# Fact verification','Checked: '+r.total,'Blocked: '+r.blocked,'Candidates for human review: '+r.candidates,'Automatic publishing is NOT enabled.'];require('fs').appendFileSync(process.env.GITHUB_STEP_SUMMARY,lines.join(String.fromCharCode(10)) + String.fromCharCode(10))"
+          node -e "const r=require('./reports/fact-check.json');console.log('Fact-checked:',r.total,'Source unavailable:',r.sourceUnavailable,'Content blocked:',r.factBlocked,'Candidates:',r.candidates);"
+          node -e "const r=require('./reports/fact-check.json');const lines=['# Fact verification','Checked: '+r.total,'Sources unavailable: '+r.sourceUnavailable,'Content blocked: '+r.factBlocked,'Candidates for human review: '+r.candidates,'Automatic publishing is NOT enabled.'];require('fs').appendFileSync(process.env.GITHUB_STEP_SUMMARY,lines.join(String.fromCharCode(10)) + String.fromCharCode(10))"
       - name: Save detailed report in main
         run: |
           git add reports/fact-check.json
