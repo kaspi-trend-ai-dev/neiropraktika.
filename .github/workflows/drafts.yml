@@ -1,0 +1,29 @@
+name: Generate SEO draft for review
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * *'
+permissions:
+  contents: write
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate next draft
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: gpt-4.1-mini
+        run: node scripts/draft.mjs
+      - name: Commit draft for editorial review
+        run: |
+          if [ -n "$(git status --porcelain -- drafts/)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add drafts/
+            git commit -m "Generate pending SEO draft"
+            git push
+          fi
