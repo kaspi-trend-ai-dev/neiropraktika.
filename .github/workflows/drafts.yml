@@ -33,6 +33,8 @@ jobs:
         run: node scripts/review-drafts.mjs
       - name: Build approved pages
         run: node scripts/publish-approved.mjs
+      - name: Verify output before publication
+        run: node scripts/check-publication.mjs
       - name: Save generated content
         run: |
           git add -A -- drafts articles.json
