@@ -47,7 +47,7 @@ for(const {file,data:d} of drafts){
  if((d.prompts||[]).some(s=>String(s).length<35))reasons.push('Prompts lack concrete detail');
  if(d.category){
   reasons.push(...practicalIssues(d));
-  reasons.push(...sourceIssues(d));
+  // Missing source verification blocks publication after editorial review.
  }
  const duplicateRisk=detectTopicCollisions(d,existing);
  if(duplicateRisk.length)reasons.push('Potential duplicate topic: '+duplicateRisk.map(x=>x.slug).join(', '));
@@ -68,6 +68,7 @@ for(const {file,data:d} of drafts){
   if(report.duplicateOf)reasons.push('Semantic duplicate: '+report.duplicateOf);
   if(report.needsExternalFactCheck)reasons.push('Unverified factual claims need source checking');
  }
+ if(d.category)reasons.push(...sourceIssues(d));
  // Conservative rule: no independent source verification exists yet.
  // Model-only approval must never be represented as independently fact-checked.
  if (reasons.length===0) reasons.push('Requires source verification before publishing');
