@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const topics = JSON.parse(fs.readFileSync('data/topics.json','utf8'));
+const sourceCatalog=JSON.parse(fs.readFileSync('data/official-sources.json','utf8'));
+
 const used = new Set(['prompty-chatgpt','rezume-chatgpt','tovar-chatgpt']);
 const norm = s => String(s).toLowerCase().replace(/ё/g,'е').replace(/[^a-zа-я0-9]+/g,' ').trim();
 const words = s => new Set(norm(s).split(' ').filter(x=>x.length>3));
@@ -54,6 +56,6 @@ fs.mkdirSync('drafts',{recursive:true});
 fs.writeFileSync(path.join('drafts',next.id+'.json'),JSON.stringify({
  ...obj,
  intent:next.intent,slug:next.id,category:next.category||'practical',
- reviewStatus:'pending',sourceAudit:{verified:false}
+ reviewStatus:'pending',sourceAudit:{verified:false},sources:sourceCatalog[next.id]||[]
 },null,2)+'\n');
 console.log('Generated detailed draft for review: '+next.id);
