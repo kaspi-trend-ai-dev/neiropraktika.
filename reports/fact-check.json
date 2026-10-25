@@ -1,7 +1,7 @@
 {
-  "auditMethod": "Official-page retrieval or dated excerpt fallback + AI content-block review + exact quote checks. Dated excerpts NEVER authorize publication.",
+  "auditMethod": "Live official-page retrieval + independent AI content-block review + exact quote checks. No snapshot substitution.",
   "model": "gpt-4.1-mini",
-  "checkedAt": "2026-10-25T18:13:26.601Z",
+  "checkedAt": "2026-10-25T18:18:58.371Z",
   "total": 7,
   "blocked": 7,
   "candidates": 0,
@@ -17,141 +17,21 @@
         {
           "title": "Анализ данных в ChatGPT — справка OpenAI",
           "url": "https://help.openai.com/ru-ru/articles/8437071-data-analysis-with-chatgpt",
-          "sha256": "fcc925d2fd2a4f7755fe6a65336137f691311068e0ca231eaa1febbd8bbab555",
-          "readableChars": 5747,
-          "loaded": true,
-          "mode": "live_official_page",
-          "snapshotDate": null
+          "loaded": false,
+          "error": "Source HTTP 403"
         },
         {
           "title": "Загрузка файлов в ChatGPT — справка OpenAI",
           "url": "https://help.openai.com/ru-ru/articles/8555545-uploading-files-and-audio-to-chatgpt",
-          "sha256": "3b025ef11380c5bb5f70ff946ce8379fbfb2fc327890f95c59174e9844bffab0",
-          "readableChars": 10165,
-          "loaded": true,
-          "mode": "live_official_page",
-          "snapshotDate": null
+          "loaded": false,
+          "error": "Source HTTP 403"
         }
       ],
       "issues": [
-        "Source verification failed for summary: unsupported",
-        "Source verification failed for steps.0: unsupported",
-        "Source verification failed for steps.1: unsupported",
-        "Source verification failed for steps.2: unsupported",
-        "Source verification failed for steps.4: unsupported",
-        "Source verification failed for steps.5: unsupported",
-        "Source verification failed for faq.0: unsupported",
-        "Source verification failed for faq.2: unsupported",
-        "Source verification failed for faq.3: unsupported",
-        "Evidence quote not found in official source for faq.4",
-        "No product capability claim backed by checked source quotation"
+        "Источник недоступен: https://help.openai.com/ru-ru/articles/8437071-data-analysis-with-chatgpt",
+        "Источник недоступен: https://help.openai.com/ru-ru/articles/8555545-uploading-files-and-audio-to-chatgpt"
       ],
-      "checks": [
-        {
-          "id": "summary",
-          "verdict": "unsupported",
-          "claim": "ChatGPT можно эффективно использовать для создания формул и анализа данных в Excel с примерами и инструкциями.",
-          "note": "В источниках нет прямого подтверждения, что ChatGPT создаёт формулы для Excel и даёт пошаговые инструкции; описан общий анализ данных и работа с файлами, но не конкретно формулы Excel.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.0",
-          "verdict": "unsupported",
-          "claim": "Запрос «Напиши формулу для подсчёта суммы по условию в столбце A» позволит получить формулу SUMIF.",
-          "note": "В источниках нет упоминания, что ChatGPT генерирует конкретные формулы Excel, например SUMIF, по текстовому запросу.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.1",
-          "verdict": "unsupported",
-          "claim": "Просите не только формулу, но и объяснение её работы, например, для вычисления среднего значения с исключением нулей.",
-          "note": "Нет подтверждения, что ChatGPT объясняет работу формул Excel, в источниках описан анализ данных, но не генерация и объяснение формул.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.2",
-          "verdict": "unsupported",
-          "claim": "Опишите структуру таблицы и задачу, чтобы получить рекомендации по сводным таблицам или формулам.",
-          "note": "Источники не подтверждают, что ChatGPT даёт рекомендации по сводным таблицам или формулам на основе описания структуры таблицы.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.3",
-          "verdict": "instructional",
-          "claim": "Полученные формулы могут требовать адаптации, важно тестировать их и уточнять запросы при несоответствии результата.",
-          "note": "Совет по проверке и адаптации результатов анализа соответствует рекомендациям по проверке сгенерированного кода и результатов.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.4",
-          "verdict": "unsupported",
-          "claim": "Попросите ChatGPT написать пример макроса или скрипта VBA для автоматизации, например, копирования данных с фильтрацией.",
-          "note": "В источниках нет упоминания о генерации макросов VBA или примеров кода для Excel.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.5",
-          "verdict": "unsupported",
-          "claim": "ChatGPT помогает с рекомендациями по упрощению формул, улучшению читаемости и повышению производительности таблиц.",
-          "note": "Нет подтверждения, что ChatGPT даёт рекомендации по упрощению формул или повышению производительности таблиц Excel.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.6",
-          "verdict": "instructional",
-          "claim": "Используйте ответы ChatGPT как учебный материал: анализируйте формулы, экспериментируйте и усложняйте задачи.",
-          "note": "Общее рекомендательное руководство по использованию ответов ChatGPT как учебного материала, без конкретных фактических утверждений.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.0",
-          "verdict": "unsupported",
-          "claim": "ChatGPT помогает создавать сложные формулы при подробном описании задачи, но формулы нужно проверять и адаптировать.",
-          "note": "Нет прямого подтверждения, что ChatGPT создаёт сложные формулы Excel по описанию задачи.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.1",
-          "verdict": "instructional",
-          "claim": "Чем конкретнее описание задачи, тем точнее ответ ChatGPT. Указывайте тип данных, результат и структуру таблицы.",
-          "note": "Общее руководство по формулировке запросов для анализа данных, без конкретных утверждений о функциях.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.2",
-          "verdict": "unsupported",
-          "claim": "ChatGPT может помочь с написанием макросов VBA для автоматизации, но для сложных сценариев нужны базовые знания программирования.",
-          "note": "Отсутствует подтверждение генерации макросов VBA в источниках.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.3",
-          "verdict": "unsupported",
-          "claim": "Формулы, предложенные ChatGPT, могут отличаться по синтаксису и названиям функций в разных языковых версиях Excel, их нужно переводить.",
-          "note": "Нет подтверждения в источниках о работе с локализацией формул Excel.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.4",
-          "verdict": "unsupported",
-          "claim": "Можно применять ChatGPT для анализа больших таблиц Excel, загружая файлы .xlsx, .xls или CSV, с учётом модели, тарифа и настроек аккаунта.",
-          "note": "Подтверждено, что ChatGPT поддерживает загрузку и анализ файлов Excel и CSV с ограничениями по модели и тарифу.",
-          "sourceUrl": null,
-          "quote": null
-        }
-      ]
+      "checks": []
     },
     {
       "slug": "chatgpt-kartinki",
@@ -163,124 +43,14 @@
         {
           "title": "Изображения в ChatGPT — OpenAI Help Center",
           "url": "https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt",
-          "sha256": "fed3fe24699d8a05d5790cf5d64118174e1e43a78f437ed304286597b21b0143",
-          "readableChars": 8233,
-          "loaded": true,
-          "mode": "live_official_page",
-          "snapshotDate": null
+          "loaded": false,
+          "error": "Source HTTP 403"
         }
       ],
       "issues": [
-        "Evidence quote not found in official source for steps.6",
-        "Source verification failed for faq.1: unsupported",
-        "Evidence quote not found in official source for faq.4"
+        "Источник недоступен: https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt"
       ],
-      "checks": [
-        {
-          "id": "summary",
-          "verdict": "supported",
-          "claim": "В ChatGPT можно создавать и редактировать изображения прямо в диалоге",
-          "note": "Подтверждается возможность создания и редактирования изображений в диалоге ChatGPT.",
-          "sourceUrl": "https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt",
-          "quote": "ChatGPT Картинки позволяет создавать новые и редактировать существующие изображения в ChatGPT. ChatGPT Картинки 2.5 обеспечивает более четкую детализацию, точное редактирование и быструю генерацию изображений, а также предлагает новые способы создания и публикации. Можно попросить ChatGPT создать изображение в беседе или выбрать Еще , а затем — Изображения ."
-        },
-        {
-          "id": "steps.0",
-          "verdict": "supported",
-          "claim": "Для создания изображения можно сразу написать просьбу в сообщении в приложении или веб-версии ChatGPT",
-          "note": "Подтверждается, что создание изображения возможно через ввод запроса в чате.",
-          "sourceUrl": "https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt",
-          "quote": "Чтобы создать изображение, опишите ChatGPT, что вы хотите получить. Вы также можете выбрать Картинки и ввести промпт."
-        },
-        {
-          "id": "steps.1",
-          "verdict": "instructional",
-          "claim": "Напишите, что должно быть на изображении: основной объект, окружение, настроение и стиль",
-          "note": "Это общий совет по формулировке запроса, без конкретных фактических утверждений о функционале.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.2",
-          "verdict": "supported",
-          "claim": "ChatGPT может сгенерировать картинку в беседе, можно открыть раздел «Изображения» при наличии интерфейса",
-          "note": "Подтверждается возможность генерации изображения в чате и наличие раздела «Изображения».",
-          "sourceUrl": "https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt",
-          "quote": "Можно попросить ChatGPT создать изображение в беседе или выбрать Еще , а затем — Изображения ."
-        },
-        {
-          "id": "steps.3",
-          "verdict": "supported",
-          "claim": "Можно редактировать созданное изображение или загрузить своё для изменений, указывая изменения текстом",
-          "note": "Подтверждается возможность редактирования и загрузки собственного изображения для изменений.",
-          "sourceUrl": "https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt",
-          "quote": "Чтобы отредактировать изображение, выберите картинку, созданную с помощью ChatGPT Картинки, или загрузите свою, а затем опишите нужные изменения."
-        },
-        {
-          "id": "steps.4",
-          "verdict": "supported",
-          "claim": "Можно указать надпись, композицию или соотношение сторон в запросе и проверить результат визуально",
-          "note": "Подтверждается возможность указания соотношения сторон и других деталей в запросе.",
-          "sourceUrl": "https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt",
-          "quote": "Вы также можете создавать изображения с любым соотношением сторон. Выберите другое соотношение сторон с помощью соответствующего переключателя или укажите нужное соотношение в промпте."
-        },
-        {
-          "id": "steps.5",
-          "verdict": "supported",
-          "claim": "Можно сохранить или скопировать изображение, названия кнопок могут отличаться в приложении и браузере",
-          "note": "Подтверждается наличие функций копирования и сохранения изображений с вариациями интерфейса.",
-          "sourceUrl": "https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt",
-          "quote": "С помощью кнопок управления изображением вы можете:\nНажать Копировать , чтобы скопировать изображение в буфер обмена.\nНажать Сохранить , чтобы скачать изображение на устройство."
-        },
-        {
-          "id": "steps.6",
-          "verdict": "unsupported",
-          "claim": "Картинка не гарантированно точна, детали нужно проверять, доступность режимов зависит от продукта и тарифа",
-          "note": "Подтверждается предупреждение о точности и зависимости функций от тарифа.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.0",
-          "verdict": "supported",
-          "claim": "ChatGPT позволяет создавать и редактировать изображения в чате по просьбе",
-          "note": "Подтверждается возможность создания и редактирования изображений в чате.",
-          "sourceUrl": "https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt",
-          "quote": "ChatGPT Картинки позволяет создавать новые и редактировать существующие изображения в ChatGPT."
-        },
-        {
-          "id": "faq.1",
-          "verdict": "unsupported",
-          "claim": "Для обычной генерации изображения отдельный сервис не обязателен, можно использовать ChatGPT",
-          "note": "В источнике говорится, что DALL·E удалён, но не утверждается, что отдельный генератор не нужен; утверждение требует уточнения, так как ChatGPT Картинки — отдельный функционал, а не просто чат.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.2",
-          "verdict": "supported",
-          "claim": "Можно изменить созданное изображение, описав изменения в беседе или используя средства редактирования",
-          "note": "Подтверждается возможность редактирования изображений.",
-          "sourceUrl": "https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt",
-          "quote": "Чтобы отредактировать изображение, выберите картинку, созданную с помощью ChatGPT Картинки, или загрузите свою, а затем опишите нужные изменения."
-        },
-        {
-          "id": "faq.3",
-          "verdict": "supported",
-          "claim": "Можно загрузить собственное изображение и попросить ChatGPT изменить его",
-          "note": "Подтверждается возможность загрузки и редактирования собственного изображения.",
-          "sourceUrl": "https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt",
-          "quote": "Чтобы отредактировать изображение, выберите картинку, созданную с помощью ChatGPT Картинки, или загрузите свою, а затем опишите нужные изменения."
-        },
-        {
-          "id": "faq.4",
-          "verdict": "unsupported",
-          "claim": "Актуальные возможности можно проверить в официальной инструкции OpenAI",
-          "note": "Подтверждается, что официальный источник содержит актуальную информацию.",
-          "sourceUrl": null,
-          "quote": null
-        }
-      ]
+      "checks": []
     },
     {
       "slug": "chatgpt-perevod",
@@ -292,109 +62,14 @@
         {
           "title": "Возможности ChatGPT — справка OpenAI",
           "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview",
-          "sha256": "d4d91ebd086726e2fc3d7f5eeb981525aac11992b598ca6ffb53e28a67e3a2e4",
-          "readableChars": 4271,
-          "loaded": true,
-          "mode": "live_official_page",
-          "snapshotDate": null
+          "loaded": false,
+          "error": "Source HTTP 403"
         }
       ],
       "issues": [
-        "Source verification failed for faq.0: unsupported",
-        "Source verification failed for faq.2: unsupported",
-        "Source verification failed for faq.4: unsupported",
-        "No product capability claim backed by checked source quotation"
+        "Источник недоступен: https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview"
       ],
-      "checks": [
-        {
-          "id": "summary",
-          "verdict": "instructional",
-          "claim": "Общее описание процесса перевода через ChatGPT с примерами и советами",
-          "note": "В блоке описаны общие инструкции и советы по использованию ChatGPT для перевода, без конкретных подтверждений интерфейсных или продуктовых деталей.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.0",
-          "verdict": "instructional",
-          "claim": "Совет чётко указывать исходный и целевой язык для точного перевода",
-          "note": "Это рекомендация по формулировке запроса, а не конкретное описание функционала, подтверждённого источником.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.1",
-          "verdict": "instructional",
-          "claim": "Совет писать короткий и понятный текст для точного перевода, разбивать длинные тексты",
-          "note": "Общее руководство по работе с текстом, без подтверждения конкретных интерфейсных функций.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.2",
-          "verdict": "instructional",
-          "claim": "Совет писать запрос в формате «Переведи следующий текст с [язык] на [язык]: [текст]»",
-          "note": "Рекомендация по формулировке запроса, не подтверждённая в источнике как обязательный формат.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.3",
-          "verdict": "instructional",
-          "claim": "Совет внимательно читать перевод и при необходимости просить объяснения или альтернативные варианты",
-          "note": "Общее руководство по взаимодействию с результатом перевода, без подтверждения конкретных функций.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.4",
-          "verdict": "instructional",
-          "claim": "Совет просить адаптацию перевода под стиль, уровень формальности или комментарии",
-          "note": "Общее руководство по работе с переводом, без подтверждения интерфейсных возможностей.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.0",
-          "verdict": "unsupported",
-          "claim": "ChatGPT поддерживает множество языков, включая редкие, но качество перевода варьируется",
-          "note": "Источник подтверждает перевод, но не содержит информации о поддержке редких языков или качестве перевода.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.1",
-          "verdict": "instructional",
-          "claim": "Советы по повышению точности перевода: указывать языки, разбивать текст, уточнять стиль",
-          "note": "Общие рекомендации по работе с переводом, без подтверждения конкретных функций.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.2",
-          "verdict": "unsupported",
-          "claim": "ChatGPT подходит для быстрого общего перевода, но для официальных документов нужна проверка профессионалом",
-          "note": "Источник не содержит информации о профессиональной пригодности или необходимости проверки переводов.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.3",
-          "verdict": "instructional",
-          "claim": "Советы исправлять ошибки в переводе через уточнения и запросы к ChatGPT",
-          "note": "Общие рекомендации по работе с переводом, без подтверждения конкретных функций.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.4",
-          "verdict": "unsupported",
-          "claim": "ChatGPT не сохраняет форматирование текста при переводе, для этого нужны специализированные инструменты",
-          "note": "Источник не содержит информации о сохранении или потере форматирования при переводе.",
-          "sourceUrl": null,
-          "quote": null
-        }
-      ]
+      "checks": []
     },
     {
       "slug": "chatgpt-pismo",
@@ -406,118 +81,14 @@
         {
           "title": "Возможности ChatGPT — справка OpenAI",
           "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview",
-          "sha256": "d4d91ebd086726e2fc3d7f5eeb981525aac11992b598ca6ffb53e28a67e3a2e4",
-          "readableChars": 4271,
-          "loaded": true,
-          "mode": "live_official_page",
-          "snapshotDate": null
+          "loaded": false,
+          "error": "Source HTTP 403"
         }
       ],
       "issues": [
-        "Evidence quote not found in official source for faq.0",
-        "Source verification failed for faq.1: unsupported",
-        "Evidence quote not found in official source for faq.2",
-        "Source verification failed for faq.3: unsupported",
-        "No product capability claim backed by checked source quotation"
+        "Источник недоступен: https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview"
       ],
-      "checks": [
-        {
-          "id": "summary",
-          "verdict": "instructional",
-          "claim": "Как быстро и грамотно составить деловое письмо с помощью ChatGPT",
-          "note": "Блок содержит рекомендации и описание процесса, а не конкретные подтверждённые факты о функциях ChatGPT для деловых писем.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.0",
-          "verdict": "instructional",
-          "claim": "Чётко сформулируйте цель письма для релевантного текста",
-          "note": "Совет по формулировке запроса — это инструкция, а не факт о функционале.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.1",
-          "verdict": "instructional",
-          "claim": "Выбор стиля письма: формальный, нейтральный или персональный",
-          "note": "Рекомендация по стилю письма — инструкция, не подтверждённый факт о продукте.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.2",
-          "verdict": "instructional",
-          "claim": "Включение важных данных для точного ответа",
-          "note": "Совет по добавлению деталей — инструкция, а не факт о функционале.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.3",
-          "verdict": "instructional",
-          "claim": "Использование шаблонов запросов для формирования текста",
-          "note": "Пример шаблона запроса — инструкция, не факт о функционале.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.4",
-          "verdict": "instructional",
-          "claim": "Проверка и адаптация сгенерированного письма",
-          "note": "Рекомендация по проверке текста — инструкция, не факт.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.5",
-          "verdict": "instructional",
-          "claim": "Уточнение запроса и переписывание письма при необходимости",
-          "note": "Совет по уточнению запроса — инструкция, не факт.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.0",
-          "verdict": "unsupported",
-          "claim": "ChatGPT может создавать тексты для разных деловых ситуаций при чётком запросе",
-          "note": "Поддерживается заявлением о широком спектре задач, включая создание текстов.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.1",
-          "verdict": "unsupported",
-          "claim": "Как сделать письмо более персональным с помощью ChatGPT",
-          "note": "В источнике нет конкретных указаний по персонализации писем через упоминание имени или предыдущих контактов.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.2",
-          "verdict": "unsupported",
-          "claim": "ChatGPT обычно генерирует грамотно оформленные тексты, но рекомендуется проверять",
-          "note": "Общее описание возможностей ChatGPT по созданию текстов подтверждает возможность грамотно генерировать тексты, но необходимость проверки логична.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.3",
-          "verdict": "unsupported",
-          "claim": "Как запросить письмо с конкретным форматом или структурой",
-          "note": "В источнике нет конкретных инструкций по запросу структуры письма с приветствием, подписью и т.п.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.4",
-          "verdict": "instructional",
-          "claim": "Что делать, если письмо не подходит по содержанию",
-          "note": "Совет по уточнению запроса и переписыванию — инструкция, не факт.",
-          "sourceUrl": null,
-          "quote": null
-        }
-      ]
+      "checks": []
     },
     {
       "slug": "chatgpt-plan",
@@ -529,114 +100,14 @@
         {
           "title": "Возможности ChatGPT — справка OpenAI",
           "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview",
-          "sha256": "d4d91ebd086726e2fc3d7f5eeb981525aac11992b598ca6ffb53e28a67e3a2e4",
-          "readableChars": 4271,
-          "loaded": true,
-          "mode": "live_official_page",
-          "snapshotDate": null
+          "loaded": false,
+          "error": "Source HTTP 403"
         }
       ],
       "issues": [
-        "Source verification failed for summary: unsupported",
-        "Source verification failed for steps.3: unsupported",
-        "Source verification failed for steps.4: unsupported",
-        "Source verification failed for faq.0: unsupported",
-        "Source verification failed for faq.1: unsupported",
-        "Source verification failed for faq.2: unsupported",
-        "Source verification failed for faq.3: unsupported",
-        "Source verification failed for faq.4: unsupported",
-        "No product capability claim backed by checked source quotation"
+        "Источник недоступен: https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview"
       ],
-      "checks": [
-        {
-          "id": "summary",
-          "verdict": "unsupported",
-          "claim": "быстро и эффективно составить план на день с помощью ChatGPT, включая пошаговую инструкцию, примеры запросов и шаблон для планирования",
-          "note": "В источнике нет упоминания о конкретных возможностях ChatGPT по составлению планов на день, пошаговых инструкциях, примерах запросов или шаблонах для планирования.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.0",
-          "verdict": "instructional",
-          "claim": "сформулировать список дел и разделить их по категориям для структурирования плана",
-          "note": "Это общий совет по формированию запроса, не факт о функционале ChatGPT.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.1",
-          "verdict": "instructional",
-          "claim": "написать четкий запрос с указанием задач, приоритетов и времени",
-          "note": "Это рекомендация по формулировке запроса, а не описание функционала.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.2",
-          "verdict": "instructional",
-          "claim": "задавать уточняющие вопросы для детализации ответа",
-          "note": "Общее руководство по взаимодействию с ChatGPT, не факт о функционале.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.3",
-          "verdict": "unsupported",
-          "claim": "попросить оформить план в виде таблицы или списка с временными интервалами для визуализации",
-          "note": "В источнике нет подтверждения, что ChatGPT может структурировать план именно в таблицу или список с временными интервалами.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.4",
-          "verdict": "unsupported",
-          "claim": "возвращаться к ChatGPT для обновления плана и адаптации расписания под новые задачи или измененное время",
-          "note": "Нет подтверждения возможности обновлять и адаптировать планы в источнике.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.0",
-          "verdict": "unsupported",
-          "claim": "ChatGPT можно попросить составить план на неделю с задачами и приоритетами для каждого дня, но лучше разбивать задачи по дням для детализации",
-          "note": "В источнике нет информации о планировании на неделю или детализации задач по дням.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.1",
-          "verdict": "unsupported",
-          "claim": "сделать план более гибким с учетом изменений, перерывов и рекомендаций по адаптации расписания",
-          "note": "Отсутствует подтверждение функционала по гибкому планированию с учетом изменений и перерывов.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.2",
-          "verdict": "unsupported",
-          "claim": "ChatGPT учитывает личные предпочтения при планировании, если они указаны в запросе",
-          "note": "Нет подтверждения, что ChatGPT учитывает личные предпочтения при планировании.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.3",
-          "verdict": "unsupported",
-          "claim": "рекомендуется обновлять план при изменении приоритетов или появлении новых задач для актуальности расписания",
-          "note": "Отсутствует информация о частоте обновления планов через ChatGPT.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.4",
-          "verdict": "unsupported",
-          "claim": "можно использовать ChatGPT для планирования с учетом перерывов и отдыха, указывая это в запросе",
-          "note": "В источнике нет подтверждения, что ChatGPT учитывает перерывы и отдых при планировании.",
-          "sourceUrl": null,
-          "quote": null
-        }
-      ]
+      "checks": []
     },
     {
       "slug": "chatgpt-ucheba",
@@ -648,177 +119,14 @@
         {
           "title": "Режим обучения в ChatGPT — OpenAI",
           "url": "https://help.openai.com/ru-ru/articles/11780217-using-study-mode-in-chatgpt",
-          "sha256": "82c034c51a5685423c643df30270681624b121abb21c60e5efb3ab9d91d777db",
-          "readableChars": 13452,
-          "loaded": true,
-          "mode": "live_official_page",
-          "snapshotDate": null
+          "loaded": false,
+          "error": "Source HTTP 403"
         }
       ],
       "issues": [
-        "Source verification failed for summary: unsupported",
-        "Evidence quote not found in official source for steps.1",
-        "Source verification failed for steps.2: unsupported",
-        "Evidence quote not found in official source for steps.3",
-        "Source verification failed for steps.4: unsupported",
-        "Evidence quote not found in official source for steps.5",
-        "Source verification failed for steps.6: unsupported",
-        "Evidence quote not found in official source for steps.7",
-        "Source verification failed for steps.8: unsupported",
-        "Source verification failed for steps.10: unsupported",
-        "Source verification failed for steps.11: unsupported",
-        "Evidence quote not found in official source for faq.0",
-        "Source verification failed for faq.1: unsupported",
-        "Evidence quote not found in official source for faq.2",
-        "Source verification failed for faq.3: unsupported",
-        "Source verification failed for faq.4: unsupported"
+        "Источник недоступен: https://help.openai.com/ru-ru/articles/11780217-using-study-mode-in-chatgpt"
       ],
-      "checks": [
-        {
-          "id": "summary",
-          "verdict": "unsupported",
-          "claim": "ChatGPT — мощный инструмент для учёбы с 12 конкретными способами использования",
-          "note": "В источнике описан режим обучения и его возможности, но нет перечисления 12 конкретных способов использования ChatGPT в учебе с примерами запросов.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.0",
-          "verdict": "supported",
-          "claim": "Задайте ChatGPT вопрос по непонятной теме, чтобы получить простое и понятное объяснение",
-          "note": "Поддерживается возможность получения простого и понятного объяснения по теме.",
-          "sourceUrl": "https://help.openai.com/ru-ru/articles/11780217-using-study-mode-in-chatgpt",
-          "quote": "Режим обучения может начать с простого объяснения, а затем, когда вы будете готовы, добавить подробности. Можно попросить его снизить темп, использовать более простые слова, привести аналогию или углубиться в тему."
-        },
-        {
-          "id": "steps.1",
-          "verdict": "unsupported",
-          "claim": "Попросите ChatGPT составить краткий конспект по большой статье или учебнику",
-          "note": "Поддерживается работа с конспектами и учебными материалами, что подразумевает возможность составления кратких конспектов.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.2",
-          "verdict": "unsupported",
-          "claim": "Используйте ChatGPT для генерации идей, составления плана или написания черновика",
-          "note": "В источнике нет прямого упоминания о генерации идей, составлении планов или написании черновиков как функции режима обучения.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.3",
-          "verdict": "unsupported",
-          "claim": "Опишите задачу и попросите ChatGPT помочь с решением или объяснением",
-          "note": "Поддерживается помощь с решением и объяснением задач.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.4",
-          "verdict": "unsupported",
-          "claim": "Попросите перевести текст или объяснить грамматические правила",
-          "note": "В источнике нет упоминания о переводах или объяснении грамматических правил как функции режима обучения.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.5",
-          "verdict": "unsupported",
-          "claim": "Составьте список вопросов по теме для самопроверки",
-          "note": "Поддерживается создание вопросов для самопроверки.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.6",
-          "verdict": "unsupported",
-          "claim": "Попросите объяснить код или помочь написать программу",
-          "note": "В источнике нет конкретных упоминаний о помощи с программированием или объяснении кода.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.7",
-          "verdict": "unsupported",
-          "claim": "Попросите ChatGPT составить вопросы и ответы для повторения материала",
-          "note": "Поддерживается составление вопросов и карточек для повторения.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.8",
-          "verdict": "unsupported",
-          "claim": "Попросите проанализировать текст, выделить аргументы или дать обратную связь",
-          "note": "В источнике нет прямого упоминания о текстовом анализе или обратной связи.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.9",
-          "verdict": "supported",
-          "claim": "Попросите составить расписание или план подготовки к экзамену",
-          "note": "Поддерживается составление планов подготовки на основе учебных материалов.",
-          "sourceUrl": "https://help.openai.com/ru-ru/articles/11780217-using-study-mode-in-chatgpt",
-          "quote": "Я загрузил свои конспекты. Помоги составить по ним план подготовки к контрольной в пятницу."
-        },
-        {
-          "id": "steps.10",
-          "verdict": "unsupported",
-          "claim": "Попросите предложить темы или идеи для курсовой работы",
-          "note": "В источнике нет упоминания о генерации тем или идей для курсовых работ.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.11",
-          "verdict": "unsupported",
-          "claim": "Попросите проверить текст на ошибки и предложить улучшения",
-          "note": "В источнике нет упоминания о проверке текста на ошибки и улучшениях.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.0",
-          "verdict": "unsupported",
-          "claim": "Можно ли использовать ChatGPT для подготовки к экзаменам? Да, ChatGPT помогает составлять вопросы для самопроверки, объяснять сложные темы и создавать планы подготовки",
-          "note": "Поддерживается помощь в подготовке к экзаменам.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.1",
-          "verdict": "unsupported",
-          "claim": "Как правильно формулировать запросы к ChatGPT для учёбы? Запросы должны быть конкретными и чёткими",
-          "note": "В источнике нет рекомендаций по формулировке запросов.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.2",
-          "verdict": "unsupported",
-          "claim": "Можно ли доверять всем ответам ChatGPT? Рекомендуется проверять полученную информацию, так как ChatGPT может допускать ошибки",
-          "note": "Поддерживается рекомендация проверять ответы.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.3",
-          "verdict": "unsupported",
-          "claim": "Как ChatGPT помогает в изучении иностранных языков? Он может переводить тексты, объяснять грамматические правила, предлагать упражнения и корректировать ошибки",
-          "note": "В источнике нет упоминаний о помощи в изучении иностранных языков.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.4",
-          "verdict": "unsupported",
-          "claim": "Можно ли использовать ChatGPT для решения домашних заданий? Можно использовать для понимания решения и получения подсказок, но важно самостоятельно выполнять задания",
-          "note": "В источнике нет прямого упоминания о правилах использования ChatGPT для домашних заданий.",
-          "sourceUrl": null,
-          "quote": null
-        }
-      ]
+      "checks": []
     },
     {
       "slug": "reels-script-from-review",
@@ -830,147 +138,14 @@
         {
           "title": "Официальный обзор возможностей ChatGPT — OpenAI",
           "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview",
-          "sha256": "9f80835b4f4d16c39ace1993a1476db96fea794b50d2ae9a7d8fdba2a2491bc3",
-          "readableChars": 5064,
-          "loaded": true,
-          "mode": "live_official_page",
-          "snapshotDate": null
+          "loaded": false,
+          "error": "Source HTTP 403"
         }
       ],
       "issues": [
-        "Source verification failed for steps.2: unsupported",
-        "No product capability claim backed by checked source quotation"
+        "Источник недоступен: https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
       ],
-      "checks": [
-        {
-          "id": "summary",
-          "verdict": "instructional",
-          "claim": "описание способа подготовки сценария Reels из отзыва без вымышленных обещаний",
-          "note": "Блок содержит методику и рекомендации, а не конкретные фактические утверждения о продукте или интерфейсе.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "result",
-          "verdict": "instructional",
-          "claim": "описание структуры сценария вертикального видео с элементами",
-          "note": "Это описание формата сценария, не факт о продукте или интерфейсе.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.0",
-          "verdict": "instructional",
-          "claim": "рекомендация по работе с отзывом: выделять факты и субъективные впечатления",
-          "note": "Это инструкция по подготовке текста, не факт о функционале или интерфейсе.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.1",
-          "verdict": "instructional",
-          "claim": "совет определить одну задачу ролика и не перегружать его преимуществами",
-          "note": "Это методический совет, не факт о продукте.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.2",
-          "verdict": "unsupported",
-          "claim": "поручить ChatGPT предложить несколько вариантов начала ролика до 10 слов без громких обещаний",
-          "note": "В источнике нет подтверждения, что ChatGPT может генерировать именно несколько вариантов начала ролика с указанными ограничениями.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.3",
-          "verdict": "instructional",
-          "claim": "разделить видео на сегменты с репликами, изображениями и текстом на экране",
-          "note": "Это инструкция по структуре ролика, не факт о продукте.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.4",
-          "verdict": "instructional",
-          "claim": "подобрать кадры для каждой реплики и удалить неподтверждённые утверждения",
-          "note": "Методический совет, не факт.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.5",
-          "verdict": "instructional",
-          "claim": "проверить текст по времени, сократить длинные фразы, подготовить субтитры",
-          "note": "Инструкция по подготовке текста, не факт.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.6",
-          "verdict": "instructional",
-          "claim": "собрать кадры, наложить озвучку и субтитры, сверить с отзывом и характеристиками",
-          "note": "Методический совет, не факт.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "steps.7",
-          "verdict": "instructional",
-          "claim": "просмотреть ролик без звука и со звуком, проверить смысл и соответствие заголовку и фактам",
-          "note": "Инструкция по проверке ролика, не факт.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.0",
-          "verdict": "instructional",
-          "claim": "рекомендации по использованию отзывов без имени и проверке прав",
-          "note": "Общие рекомендации, не факт.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.1",
-          "verdict": "instructional",
-          "claim": "что делать с коротким отзывом: использовать подтверждённые тезисы и демонстрацию товара",
-          "note": "Совет, не факт.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "faq.2",
-          "verdict": "instructional",
-          "claim": "озвучка не обязательна, можно использовать титры, важно проверить читаемость",
-          "note": "Рекомендация, не факт.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "limitations.0",
-          "verdict": "instructional",
-          "claim": "это учебный пример, а не подтверждённый кейс с измеренными продажами или охватами",
-          "note": "Уточнение о характере примера, не факт.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "limitations.1",
-          "verdict": "instructional",
-          "claim": "необходимо отдельно проверить права на отзыв и разрешения на использование",
-          "note": "Рекомендация, не факт.",
-          "sourceUrl": null,
-          "quote": null
-        },
-        {
-          "id": "limitations.2",
-          "verdict": "instructional",
-          "claim": "не гарантируется рост просмотров или продаж от такого ролика",
-          "note": "Уточнение, не факт.",
-          "sourceUrl": null,
-          "quote": null
-        }
-      ]
+      "checks": []
     }
   ]
 }
