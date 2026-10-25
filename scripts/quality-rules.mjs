@@ -1,4 +1,5 @@
 import {createHash} from 'node:crypto';
+import {frontierDraftIssues} from './editorial-signal.mjs';
 // Common offline content checks. These checks identify risk, not factual truth.
 export const normalize = value => String(value ?? '').toLowerCase().replace(/ё/g,'е')
   .replace(/[^a-zа-я0-9]+/g,' ').trim();
@@ -44,6 +45,7 @@ export function practicalIssues(d){
  if(!Array.isArray(d.faq)||d.faq.length<3)errors.push('Not enough answers to follow-up questions');
  if(!Array.isArray(d.limitations)||d.limitations.length===0)errors.push('No limitations or cautions');
  if(/гарантированн(?:ый|о)|100% доход|заработаете \d+|в \d+ раза быстрее/i.test([d.title,d.summary,d.result].join(' ')))errors.push('Unsupported guaranteed outcome');
+ errors.push(...frontierDraftIssues(d));
  return [...new Set(errors)];
 }
 // Canonical fingerprint of visible article content: changing a checked sentence invalidates approval.
@@ -51,6 +53,11 @@ export function articleContentHash(d){
  const fields=['slug','intent','title','summary','audience','result','inputs','steps','example','prompts','mistakes','checklist','faq','limitations','sources'];
  const snapshot={};
  for(const key of fields)snapshot[key]=d[key]??null;
+ // Preserve the exact hash of legacy published articles, but fingerprint
+ // additional frontier-story fields when they actually exist.
+ for(const key of ['newsHook','breakthrough','proofBoundary','editorialAngle']){
+  if(d[key]!==undefined)snapshot[key]=d[key];
+ }
  return createHash('sha256').update(JSON.stringify(snapshot)).digest('hex');
 }
 export function sourceIssues(d){
