@@ -1,3 +1,4 @@
+import {createHash} from 'node:crypto';
 // Common offline content checks. These checks identify risk, not factual truth.
 export const normalize = value => String(value ?? '').toLowerCase().replace(/ё/g,'е')
   .replace(/[^a-zа-я0-9]+/g,' ').trim();
@@ -45,6 +46,13 @@ export function practicalIssues(d){
  if(/гарантированн(?:ый|о)|100% доход|заработаете \d+|в \d+ раза быстрее/i.test([d.title,d.summary,d.result].join(' ')))errors.push('Unsupported guaranteed outcome');
  return [...new Set(errors)];
 }
+// Canonical fingerprint of visible article content: changing a checked sentence invalidates approval.
+export function articleContentHash(d){
+ const fields=['slug','intent','title','summary','audience','result','inputs','steps','example','prompts','mistakes','checklist','faq','limitations','sources'];
+ const snapshot={};
+ for(const key of fields)snapshot[key]=d[key]??null;
+ return createHash('sha256').update(JSON.stringify(snapshot)).digest('hex');
+}
 export function sourceIssues(d){
  const errors=[], sources=Array.isArray(d.sources)?d.sources:[];
  if(!sources.length)errors.push('No cited official documentation');
@@ -57,5 +65,9 @@ export function sourceIssues(d){
  // A link alone does not demonstrate that its content supports the article.
  if(!(d.sourceAudit?.verified===true && d.sourceAudit?.reviewer==='human'))
   errors.push('Source claims not independently verified');
+ else if(d.sourceAudit?.contentHash!==articleContentHash(d))
+  errors.push('Article changed after source review: approval fingerprint mismatch');
+ else if(!d.sourceAudit?.verifiedAt || !d.sourceAudit?.reviewNotes)
+  errors.push('Source review lacks dated evidence notes');
  return [...new Set(errors)];
 }
