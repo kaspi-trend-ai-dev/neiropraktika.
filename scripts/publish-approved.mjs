@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 const esc = value => String(value ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const link = (title,url) => { try { const u=new URL(url); if(!['https:','http:'].includes(u.protocol)) return ''; return '<a href="'+esc(u.href)+'" target="_blank" rel="noopener noreferrer">'+esc(title)+'</a>'; } catch { return ''; } };
 const dir='drafts';
 const drafts=fs.readdirSync(dir).filter(x=>x.endsWith('.json'));
 let published=0;
@@ -14,7 +15,8 @@ for(const name of drafts){
  const prompts=d.prompts.map(x=>'<li><pre>'+esc(x)+'</pre></li>').join('');
  const mistakes=(d.mistakes||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
  const faq=d.faq.map(x=>'<h3>'+esc(x.question)+'</h3><p>'+esc(x.answer)+'</p>').join('');
- const html='<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(d.title)+' — НейроПрактика</title><meta name="description" content="'+esc(d.summary.slice(0,155))+'"><link rel="stylesheet" href="../style.css"></head><body><header><a class="logo" href="../">✳ НейроПрактика</a></header><article class="article"><a class="back" href="../">← Все инструкции</a><h1>'+esc(d.title)+'</h1><p>'+esc(d.summary)+'</p>'+sections+'<h2>Готовые промпты</h2><ol>'+prompts+'</ol><h2>Частые ошибки</h2><ul>'+mistakes+'</ul><h2>Вопросы и ответы</h2>'+faq+'</article><footer>НейроПрактика</footer></body></html>';
+ const sources=Array.isArray(d.sources)&&d.sources.length?'<h2>Источники</h2><ul>'+d.sources.map(x=>'<li>'+link(x.title,x.url)+'</li>').join('')+'</ul>':'';
+ const html='<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(d.title)+' — НейроПрактика</title><meta name="description" content="'+esc(d.summary.slice(0,155))+'"><link rel="stylesheet" href="../style.css"></head><body><header><a class="logo" href="../">✳ НейроПрактика</a></header><article class="article"><a class="back" href="../">← Все инструкции</a><h1>'+esc(d.title)+'</h1><p>'+esc(d.summary)+'</p>'+sections+'<h2>Готовые промпты</h2><ol>'+prompts+'</ol><h2>Частые ошибки</h2><ul>'+mistakes+'</ul><h2>Вопросы и ответы</h2>'+faq+sources+'</article><footer>НейроПрактика</footer></body></html>';
  fs.mkdirSync('articles',{recursive:true});fs.writeFileSync(loc,html);
  manifest.push({href:'./'+loc,title:d.title,description:d.summary,category:'ИИ · ИНСТРУКЦИИ'});
  published++;
