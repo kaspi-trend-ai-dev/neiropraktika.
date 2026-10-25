@@ -71,16 +71,17 @@
     }
   ],
   "reviewNotes": [
-    "Исправлено ложное утверждение о невозможности анализа загруженных файлов Excel. Возможности подтверждены справкой OpenAI. Остальные инструкции требуют редакционного контроля актуальности."
+    "Исправлено ложное утверждение о невозможности анализа загруженных файлов Excel. Возможности подтверждены справкой OpenAI. Остальные инструкции требуют редакционного контроля актуальности.",
+    "Academy/официальные первоисточники добавлены для проверки; наличие ссылки само по себе не означает проверку достоверности."
   ],
   "sources": [
     {
-      "title": "Анализ данных в ChatGPT — справка OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/8437071-data-analysis-with-chatgpt"
+      "title": "Анализ таблиц в ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/data-analysis/"
     },
     {
-      "title": "Загрузка файлов в ChatGPT — справка OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      "title": "Работа с файлами в ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/working-with-files/"
     }
   ],
   "reviewMethod": "manual-source-correction-2026-10-25"
