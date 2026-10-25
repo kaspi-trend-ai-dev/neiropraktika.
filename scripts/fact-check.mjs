@@ -85,7 +85,7 @@ for(const d of selected){
    row.issues.push('Источник недоступен: '+ref.url);
   }
  }
- if(row.issues.length||!live.length)continue;
+ if(row.issues.length||!live.length){row.verdict='source_unavailable';continue;}
  const units=blocks(d);
  if(units.length<4){row.issues.push('Не хватает текстовых блоков для проверки');continue;}
  try{
@@ -100,11 +100,13 @@ for(const d of selected){
  }catch(e){row.issues.push('Проверка не завершена: '+String(e.message||e).slice(0,220));}
  console.log('Fact audit '+d.slug+': '+row.verdict+', issues='+row.issues.length);
 }
-const blocked=results.filter(r=>r.verdict!=='candidate_for_human_review').length;
+const sourceUnavailable=results.filter(r=>r.verdict==='source_unavailable').length;
+const factBlocked=results.filter(r=>r.verdict==='blocked').length;
+const blocked=sourceUnavailable+factBlocked;
 const report={
  auditMethod:'Live official-page retrieval + independent AI content-block review + exact quote checks. No snapshot substitution.',
  model:OPENAI_MODEL,checkedAt:new Date().toISOString(),
- total:results.length,blocked,candidates:results.length-blocked,
+ total:results.length,blocked,sourceUnavailable,factBlocked,candidates:results.length-blocked,
  notes:'Passing the automated check does not authorize auto-publishing. Existing publication and human approval gates remain in force.',
  results
 };
