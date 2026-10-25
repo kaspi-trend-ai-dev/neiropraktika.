@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import {practicalIssues,sourceIssues,detectTopicCollisions,articleContentHash} from './quality-rules.mjs';
+import {editorialIdeaIssues,frontierDraftIssues} from './editorial-signal.mjs';
+import fs from 'node:fs';
 
 const sample={
  slug:'reels-from-review',intent:'Как создать Reels из отзыва покупателя',
@@ -39,3 +41,15 @@ assert.ok(sourceIssues(changed).some(x=>x.includes('fingerprint mismatch')),'Any
 const changedSources={...reviewed,sources:[{title:'New unrelated documentation',url:'https://example.com/other'}]};
 assert.ok(sourceIssues(changedSources).some(x=>x.includes('fingerprint mismatch')),'Source changes invalidate approval');
 console.log('Review fingerprint tests passed');
+
+const currentTopics=JSON.parse(fs.readFileSync('data/topics.json','utf8'));
+assert.ok(currentTopics.length>=5,'Needs a meaningful frontier topic pipeline');
+for(const t of currentTopics)assert.deepEqual(editorialIdeaIssues(t),[],t.id+' must have a strong, sourced frontier angle');
+assert.ok(editorialIdeaIssues({title:'Как написать письмо через ChatGPT',category:'basic'}).length>0,'Reject beginner letters');
+assert.ok(editorialIdeaIssues({title:'Как сделать субтитры в CapCut',category:'basic'}).length>0,'Reject low-novelty subtitle clicks');
+const story=JSON.parse(fs.readFileSync('drafts/seedance25-video-story.json','utf8'));
+assert.deepEqual(frontierDraftIssues(story),[],'Advanced story must describe novelty and proof boundaries');
+const weak={...story,newsHook:'Просто откройте программу и нажмите кнопку'};
+assert.ok(frontierDraftIssues(weak).some(x=>x.includes('news hook')),'Reject articles with banal news lead');
+assert.deepEqual(practicalIssues(story),[],'New story should satisfy project and frontier content quality checks');
+console.log('Frontier editorial signal tests passed');
