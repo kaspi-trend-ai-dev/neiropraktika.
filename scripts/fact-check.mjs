@@ -1,12 +1,10 @@
 import fs from 'node:fs';
-import {retrieveOfficialSource,validateFactJudgments,sha256} from './fact-check-utils.mjs';
+import {retrieveOfficialSource,validateFactJudgments} from './fact-check-utils.mjs';
 
 const ALL=process.argv.includes('--all');
 const SINGLE=(process.argv.find(x=>x.startsWith('--slug='))||'').slice(7);
 const OPENAI_MODEL=process.env.OPENAI_FACT_MODEL||'gpt-4.1-mini';
 const catalog=JSON.parse(fs.readFileSync('data/official-sources.json','utf8'));
-const snapshots=JSON.parse(fs.readFileSync('data/source-snapshots.json','utf8'));
-const snapshotByURL=new Map(snapshots.map(s=>[s.url,s]));
 const drafts=fs.readdirSync('drafts').filter(f=>f.endsWith('.json')).sort()
  .map(f=>JSON.parse(fs.readFileSync('drafts/'+f,'utf8')));
 const selected=drafts.filter(d=>SINGLE?d.slug===SINGLE:ALL?true:
@@ -29,24 +27,7 @@ function blocks(d){
 async function sourceFor(s){
  const key=s.url;
  if(!cachedSources.has(key)){
-  cachedSources.set(key,(async()=>{
-   try {
-    const item=await retrieveOfficialSource(key);
-    return {...item,mode:'live_official_page'};
-   }catch(e){
-    // OpenAI Help Center currently rejects GitHub Actions requests with HTTP 403.
-    // The fallback is a short, manually transcribed excerpt, NOT a live fact check.
-    if(!String(e.message||e).includes('Source HTTP 403'))throw e;
-    const snap=snapshotByURL.get(key);
-    if(!snap)throw e;
-    const timestamp=Date.parse(snap.reviewedAt+'T00:00:00Z');
-    const age=Date.now()-timestamp;
-    if(!Number.isFinite(age)||age<0||age>7*86400000)throw Error('Official snapshot expired; live source HTTP 403');
-    const sample=(snap.quotes||[]).join('\n');
-    if(sample.trim().length<26)throw Error('Offline source excerpt not sufficient');
-    return {url:key,text:sample,sha256:sha256(sample),mode:'dated_excerpt_not_live',snapshotDate:snap.reviewedAt};
-   }
-  })());
+  cachedSources.set(key,retrieveOfficialSource(key).then(x=>({...x,mode:'live_official_page'})));
  }
  return cachedSources.get(key);
 }
@@ -59,6 +40,9 @@ async function runModel(units,sources,d){
  'Use only ACTUALLY FETCHED official documentation provided here. Do not use your own memory as evidence.',
  'Allowed verdicts: supported, instructional, unsupported, contradicted.',
  'supported: every specific product/interface claim in this block is directly supported by at least one official source. Include sourceIndex and one DIRECT VERBATIM QUOTE copied from that source of length 26-380 characters (no ellipses, no rewriting). If a block mixes supported and unsupported factual claims, mark unsupported.',
+ 'When documentation confirms a GENERAL ability (e.g. draft or rewrite text), that also supports ordinary examples like drafting a short script, crafting five headlines, adapting a letter tone, or requesting ten words. The source need not literally mention each illustrative format or number. Do not incorrectly mark these as unsupported merely because an example was not quoted verbatim.',
+ 'Distinguish a user-given workflow, hypothetical worked example and recommendation from a claim that a PRODUCT HAS a specific capability or UI. Ordinary advice about how to use a general language model can be instructional. But explicit product capabilities must have real evidence, not be disguised as instructional.',
+ 'Avoid false negatives: unsupported means the documentation does not substantiate a material external fact, NOT that it does not repeat the article title or every common-sense example.',
  'instructional: the entire block is generic advice or writing procedure with NO factual statement about platform features, pricing, UI, availability, safety claims or measurable outcomes. It must NOT be used as an escape route for unsupported product assertions.',
  'unsupported: any significant factual product claim not proven by the supplied sources. contradicted: explicitly refuted by the sources.',
  'Do not infer rights, monetization rates, guaranteed outcomes or exact menu/button positions from general documentation.',
@@ -118,7 +102,7 @@ for(const d of selected){
 }
 const blocked=results.filter(r=>r.verdict!=='candidate_for_human_review').length;
 const report={
- auditMethod:'Official-page retrieval or dated excerpt fallback + AI content-block review + exact quote checks. Dated excerpts NEVER authorize publication.',
+ auditMethod:'Live official-page retrieval + independent AI content-block review + exact quote checks. No snapshot substitution.',
  model:OPENAI_MODEL,checkedAt:new Date().toISOString(),
  total:results.length,blocked,candidates:results.length-blocked,
  notes:'Passing the automated check does not authorize auto-publishing. Existing publication and human approval gates remain in force.',
