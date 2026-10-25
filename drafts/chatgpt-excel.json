@@ -1,7 +1,7 @@
 {
   "intent": "Как использовать ChatGPT в Excel",
   "slug": "chatgpt-excel",
-  "reviewStatus": "pending",
+  "reviewStatus": "approved",
   "title": "ChatGPT для Excel: как писать формулы и разбирать таблицы",
   "summary": "ChatGPT можно эффективно использовать для создания формул и анализа данных в Excel. С помощью четко сформулированных запросов вы получите готовые формулы, объяснения их работы и рекомендации по обработке таблиц. Ниже приведены конкретные примеры запросов и пошаговые инструкции для работы с ChatGPT в контексте Excel.",
   "steps": [
@@ -69,5 +69,8 @@
       "question": "Можно ли применять ChatGPT для анализа больших таблиц в Excel?",
       "answer": "ChatGPT помогает с советами и формулами для анализа, но не обрабатывает файлы напрямую. Для больших данных лучше комбинировать его рекомендации с инструментами Excel."
     }
+  ],
+  "reviewNotes": [
+    "Passed structural and overlap checks; factual accuracy not independently verified"
   ]
 }
