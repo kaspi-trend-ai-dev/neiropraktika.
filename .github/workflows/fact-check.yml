@@ -16,6 +16,9 @@ on:
       - '.github/workflows/fact-check.yml'
 permissions:
   contents: write
+concurrency:
+  group: neiropraktika-report-writes
+  cancel-in-progress: false
 jobs:
   fact-check:
     runs-on: ubuntu-latest
@@ -48,15 +51,9 @@ jobs:
           node -e "const r=require('./reports/fact-check.json');console.log('Fact-checked:',r.total,'Source unavailable:',r.sourceUnavailable,'Content blocked:',r.factBlocked,'Candidates:',r.candidates);"
           node -e "const r=require('./reports/fact-check.json');const lines=['# Fact verification','Checked: '+r.total,'Sources unavailable: '+r.sourceUnavailable,'Content blocked: '+r.factBlocked,'Candidates for human review: '+r.candidates,'Automatic publishing is NOT enabled.'];require('fs').appendFileSync(process.env.GITHUB_STEP_SUMMARY,lines.join(String.fromCharCode(10)) + String.fromCharCode(10))"
       - name: Save detailed report in main
-        run: |
-          git add reports/fact-check.json reports/FACT-STATUS.md
-          if ! git diff --cached --quiet; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "Refresh official-source evidence audit"
-            git push
-          fi
+        run: bash scripts/push-report-safely.sh 'Refresh official-source evidence audit' reports/fact-check.json reports/FACT-STATUS.md
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: fact-check-evidence
           path: reports/fact-check.json
