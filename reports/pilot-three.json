@@ -1,0 +1,45 @@
+{
+  "description": "Offline pilot-readiness audit of three hands-on tutorials; DOES NOT verify online source claims or grant publication approval",
+  "generatedAt": "2026-10-25T18:32:51.927Z",
+  "threeDrafts": 3,
+  "ready": 0,
+  "held": 3,
+  "results": [
+    {
+      "slug": "chatgpt-kartinki",
+      "title": "Как создавать изображения в ChatGPT: от идеи до готового запроса",
+      "status": "approved",
+      "hasWorkedExample": true,
+      "checklistItems": 5,
+      "readyToPublish": false,
+      "actuallyPublished": true,
+      "issues": [
+        "Source claims not independently verified"
+      ]
+    },
+    {
+      "slug": "shorts-interview-ai",
+      "title": "Как сделать 5 Shorts из одного интервью с ИИ: таймкоды, сценарий и монтаж",
+      "status": "needs_review",
+      "hasWorkedExample": true,
+      "checklistItems": 5,
+      "readyToPublish": false,
+      "actuallyPublished": false,
+      "issues": [
+        "Source claims not independently verified"
+      ]
+    },
+    {
+      "slug": "freelance-ai-portfolio",
+      "title": "Как собрать портфолио ИИ-фрилансера: 3 услуги, примеры работ и предложение клиенту",
+      "status": "needs_review",
+      "hasWorkedExample": true,
+      "checklistItems": 6,
+      "readyToPublish": false,
+      "actuallyPublished": false,
+      "issues": [
+        "Source claims not independently verified"
+      ]
+    }
+  ]
+}
