@@ -162,5 +162,57 @@
       "title": "Как искать идеи и планировать с ChatGPT — OpenAI Academy",
       "url": "https://openai.com/academy/brainstorming/"
     }
+  ],
+  "seedance25-video-story": [
+    {
+      "title": "Релиз Seedance 2.5 — ByteDance",
+      "url": "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5"
+    }
+  ],
+  "claude-blender-motion": [
+    {
+      "title": "Claude for Creative Work — Anthropic",
+      "url": "https://www.anthropic.com/news/claude-for-creative-work"
+    }
+  ],
+  "suno6-visual-soundtrack": [
+    {
+      "title": "Официальные релизы Suno v6",
+      "url": "https://suno.com/release-notes"
+    }
+  ],
+  "elevenlabs-mcp-media": [
+    {
+      "title": "Генерация речи, музыки и видео через ElevenLabs MCP",
+      "url": "https://elevenlabs.io/blog/introducing-voice-music-image-and-video-generation-in-the-elevenlabs-mcp"
+    }
+  ],
+  "seedance25-clay-animation": [
+    {
+      "title": "Seedance 2.5 и clay render — ByteDance",
+      "url": "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5"
+    }
+  ],
+  "suno6-seedance25-musicvideo": [
+    {
+      "title": "Seedance 2.5 — ByteDance",
+      "url": "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5"
+    },
+    {
+      "title": "Suno v6 — официальные release notes",
+      "url": "https://suno.com/release-notes"
+    }
+  ],
+  "runway-gen45-camera": [
+    {
+      "title": "Runway Gen-4.5: официальное руководство",
+      "url": "https://help.runwayml.com/hc/en-us/articles/46974685288467-Creating-with-Gen-4-5"
+    }
+  ],
+  "claude-creative-toolchain": [
+    {
+      "title": "Claude for Creative Work — Anthropic",
+      "url": "https://www.anthropic.com/news/claude-for-creative-work"
+    }
   ]
 }
