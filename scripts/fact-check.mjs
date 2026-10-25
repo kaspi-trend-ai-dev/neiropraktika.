@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import {retrieveOfficialSource,validateFactJudgments,sourceSegments} from './fact-check-utils.mjs';
+import {articleContentHash} from './quality-rules.mjs';
 
 const ALL=process.argv.includes('--all');
 const SINGLE=(process.argv.find(x=>x.startsWith('--slug='))||'').slice(7);
@@ -68,7 +69,7 @@ async function runModel(units,sources,d){
 }
 const results=[];
 for(const d of selected){
- const row={slug:d.slug,title:d.title,currentStatus:d.reviewStatus,verdict:'blocked',
+ const row={slug:d.slug,title:d.title,contentHash:articleContentHash(d),currentStatus:d.reviewStatus,verdict:'blocked',
   // This automated review NEVER changes reviewStatus or grants a human approval.
   independentlyHumanReviewed:false,sources:[],issues:[],checks:[]};
  results.push(row);
