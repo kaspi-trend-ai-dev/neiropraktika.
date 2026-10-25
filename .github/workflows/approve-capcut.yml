@@ -2,12 +2,6 @@ name: Approve CapCut tutorial after editorial review
 on:
   workflow_dispatch:
     inputs:
-      slug:
-        description: Article to approve
-        type: choice
-        required: true
-        options:
-          - capcut-subtitles-reels
       attestation:
         description: 'Only after reading the article and the official source, confirm ПРОВЕРЕНО'
         type: string
@@ -30,7 +24,7 @@ jobs:
           node-version: '22'
       - name: Record human approval and verify current official CapCut documentation
         env:
-          REVIEWED_SLUG: ${{ inputs.slug }}
+          REVIEWED_SLUG: capcut-subtitles-reels
           REVIEW_ATTESTATION: ${{ inputs.attestation }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_FACT_MODEL: gpt-4.1-mini
