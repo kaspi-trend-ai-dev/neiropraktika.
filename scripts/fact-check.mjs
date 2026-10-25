@@ -85,14 +85,16 @@ for(const d of selected){
    row.issues.push('Источник недоступен: '+ref.url);
   }
  }
- if(row.issues.length||!live.length){row.verdict='source_unavailable';continue;}
+ if(!live.length){row.verdict='source_unavailable';continue;}
+ const unavailableCount=row.issues.length;
  const units=blocks(d);
  if(units.length<4){row.issues.push('Не хватает текстовых блоков для проверки');continue;}
  try{
   const checked=await runModel(units,live,d);
-  row.verdict=checked.status;
-  row.issues=checked.issues;
+  row.verdict=unavailableCount?'partial_sources':checked.status;
+  row.issues=[...row.issues,...checked.issues];
   row.checks=checked.checks;
+  if(unavailableCount)row.issues.push('Проверена только часть первоисточников; автоматический допуск запрещён');
   if(live.some(s=>s.mode!=='live_official_page')){
    row.verdict='blocked';
    row.issues.push('Источники доступны лишь как датированные выдержки; требуется повторная проверка живой страницы.');
@@ -101,12 +103,13 @@ for(const d of selected){
  console.log('Fact audit '+d.slug+': '+row.verdict+', issues='+row.issues.length);
 }
 const sourceUnavailable=results.filter(r=>r.verdict==='source_unavailable').length;
+const partialSources=results.filter(r=>r.verdict==='partial_sources').length;
 const factBlocked=results.filter(r=>r.verdict==='blocked').length;
-const blocked=sourceUnavailable+factBlocked;
+const blocked=sourceUnavailable+partialSources+factBlocked;
 const report={
  auditMethod:'Live official-page retrieval + independent AI content-block review + exact quote checks. No snapshot substitution.',
  model:OPENAI_MODEL,checkedAt:new Date().toISOString(),
- total:results.length,blocked,sourceUnavailable,factBlocked,candidates:results.length-blocked,
+ total:results.length,blocked,sourceUnavailable,partialSources,factBlocked,candidates:results.length-blocked,
  notes:'Passing the automated check does not authorize auto-publishing. Existing publication and human approval gates remain in force.',
  results
 };
