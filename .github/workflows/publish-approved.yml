@@ -22,7 +22,7 @@ jobs:
           if [ -n "$(git status --porcelain -- articles/ articles.json)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add articles/ articles.json
+            git add -A -- articles.json articles/ 2>/dev/null || git add -A -- articles.json
             git commit -m "Publish reviewed tutorials"
             git push
           fi
