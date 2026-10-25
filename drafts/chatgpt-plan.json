@@ -64,13 +64,18 @@
   ],
   "reviewNotes": [
     "Passed structure and model-based editorial review; external fact verification not performed",
-    "Added general official reference; individual claims not independently fact-checked."
+    "Added general official reference; individual claims not independently fact-checked.",
+    "Academy/официальные первоисточники добавлены для проверки; наличие ссылки само по себе не означает проверку достоверности."
   ],
   "reviewMethod": "structure-and-ai-editor-v2",
   "sources": [
     {
-      "title": "Возможности ChatGPT — справка OpenAI",
-      "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview"
+      "title": "Как искать идеи и планировать с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/brainstorming/"
+    },
+    {
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
     }
   ]
 }
