@@ -3,14 +3,21 @@
   "intent": "Как добавить автоматические субтитры в CapCut",
   "title": "Как сделать субтитры для Reels в CapCut: пошаговый монтаж без ручного набора",
   "category": "editing",
-  "reviewStatus": "needs_review",
+  "reviewStatus": "approved",
   "sourceAudit": {
-    "verified": false
+    "verified": true,
+    "reviewer": "human",
+    "verifiedBy": "kaspi-trend-ai-dev",
+    "verifiedAt": "2026-10-25T20:12:29.111Z",
+    "reviewNotes": "Human attestation in GitHub Actions; factual evidence in reports/fact-check.json and verified official CapCut page. The worked example is fictional.",
+    "evidenceCheckedAt": "2026-10-25T20:12:29.079Z",
+    "contentHash": "aa5948377875ac2df9ab2b7f4ce02260e3e5f73c5471989c5c707c1fe0e32e41"
   },
   "reviewNotes": [
     "Подробный учебный мастер-класс. Инструкция сверяется с официальной справкой CapCut, не прошла независимую редакционную проверку; до проверки не публиковать.",
     "Уточнён FAQ о синхронизации: вместо неподтверждённого категоричного заявления — воспроизводимый способ самопроверки.",
-    "Редакторская проверка по первоисточнику CapCut: подтверждены Auto Captions, выбор языка, редактирование текста и времени, доступность на веб/ПК/мобильной версии. Пошаговый пример условный; реальный запуск в CapCut не выполнялся."
+    "Редакторская проверка по первоисточнику CapCut: подтверждены Auto Captions, выбор языка, редактирование текста и времени, доступность на веб/ПК/мобильной версии. Пошаговый пример условный; реальный запуск в CapCut не выполнялся.",
+    "GitHub reviewer @kaspi-trend-ai-dev personally attested to reviewing the final copy and official sources. This is not proof of running the tutorial in the app."
   ],
   "summary": "Добавить автоматические субтитры к Reels можно средствами CapCut: загрузите видео с речью, включите Auto Captions (автораспознавание), укажите язык и вручную исправьте ошибки текста и синхронизации. В этом практическом уроке соберём субтитры для вертикального ролика и проверим читаемость без ручного набора каждой фразы.",
   "audience": "Начинающим монтажёрам, продавцам и авторам вертикальных видео, которым нужно быстро оформить понятные субтитры на телефоне или компьютере.",
@@ -108,5 +115,6 @@
       "title": "Как распознать и исправить субтитры — официальная инструкция CapCut",
       "url": "https://www.capcut.com/help/how-to-recognise-subtitles"
     }
-  ]
+  ],
+  "reviewMethod": "human-github-attestation-with-official-evidence-v1"
 }
