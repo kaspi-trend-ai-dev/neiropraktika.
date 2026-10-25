@@ -68,12 +68,13 @@
   ],
   "reviewNotes": [
     "Passed structural and overlap checks; factual accuracy not independently verified",
-    "Added general official reference; individual claims not independently fact-checked."
+    "Added general official reference; individual claims not independently fact-checked.",
+    "Academy/официальные первоисточники добавлены для проверки; наличие ссылки само по себе не означает проверку достоверности."
   ],
   "sources": [
     {
-      "title": "Возможности ChatGPT — справка OpenAI",
-      "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview"
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
     }
   ]
 }
