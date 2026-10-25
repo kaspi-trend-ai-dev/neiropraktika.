@@ -8,6 +8,9 @@ const manifest=[];
 for(const name of drafts){
  const d=JSON.parse(fs.readFileSync(dir+'/'+name,'utf8'));
  if(d.reviewStatus!=='approved')continue;
+ // Legacy articles remain visible while they are audited; never admit new unverified pieces.
+ const legacy=new Set(['chatgpt-excel','chatgpt-kartinki','chatgpt-perevod','chatgpt-pismo','chatgpt-plan','chatgpt-ucheba']);
+ if(!legacy.has(d.slug) && !(d.sourceAudit?.verified===true && d.sourceAudit?.reviewer==='human' && Array.isArray(d.sources) && d.sources.length)) { console.log('HOLD: missing independent source review',d.slug); continue; }
  if(!/^[a-z0-9-]+$/.test(d.slug))throw Error('Bad slug');
  if(!d.title||!d.summary||!Array.isArray(d.steps)||d.steps.length<5||!Array.isArray(d.prompts)||d.prompts.length<3||!Array.isArray(d.faq)||d.faq.length<3)throw Error('Incomplete: '+d.slug);
  const loc='articles/'+d.slug+'.html';
