@@ -49,7 +49,7 @@ jobs:
           node -e "const r=require('./reports/fact-check.json');const lines=['# Fact verification','Checked: '+r.total,'Sources unavailable: '+r.sourceUnavailable,'Content blocked: '+r.factBlocked,'Candidates for human review: '+r.candidates,'Automatic publishing is NOT enabled.'];require('fs').appendFileSync(process.env.GITHUB_STEP_SUMMARY,lines.join(String.fromCharCode(10)) + String.fromCharCode(10))"
       - name: Save detailed report in main
         run: |
-          git add reports/fact-check.json
+          git add reports/fact-check.json reports/FACT-STATUS.md
           if ! git diff --cached --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
