@@ -23,4 +23,5 @@ jobs:
         run: |
           node scripts/test-quality.mjs
           node scripts/test-fact-check.mjs
+          node scripts/test-approval.mjs
           node scripts/check-publication.mjs
