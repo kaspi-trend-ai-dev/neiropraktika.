@@ -22,6 +22,9 @@ for(const name of drafts){
  if(!/^[a-z0-9-]+$/.test(d.slug))throw Error('Bad slug');
  if(!d.title||!d.summary||!Array.isArray(d.steps)||d.steps.length<5||!Array.isArray(d.prompts)||d.prompts.length<3||!Array.isArray(d.faq)||d.faq.length<3)throw Error('Incomplete: '+d.slug);
  const loc='articles/'+d.slug+'.html';
+ const frontier=d.category?.startsWith('frontier-')
+  ? '<aside class="frontier-lead"><p><strong>Новая возможность</strong></p><p>'+esc(d.newsHook||'')+'</p><h2>Почему это важно</h2><p>'+esc(d.breakthrough||'')+'</p><h2>Что подтверждено и что стоит проверить</h2><p>'+esc(d.proofBoundary||'')+'</p></aside>'
+  : '';
  const audience=d.audience?'<p><strong>Для кого:</strong> '+esc(d.audience)+'</p>':'';
  const lead=d.result?'<h2>Что получится в итоге</h2><p>'+esc(d.result)+'</p>':'';
  const prep=Array.isArray(d.inputs)&&d.inputs.length?'<h2>Что потребуется</h2><ul>'+d.inputs.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'';
@@ -33,7 +36,7 @@ for(const name of drafts){
  const mistakes=(d.mistakes||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
  const faq=d.faq.map(x=>'<h3>'+esc(x.question)+'</h3><p>'+esc(x.answer)+'</p>').join('');
  const sources=Array.isArray(d.sources)&&d.sources.length?'<h2>Источники</h2><ul>'+d.sources.map(x=>'<li>'+link(x.title,x.url)+'</li>').join('')+'</ul>':'';
- const html='<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(d.title)+' — НейроПрактика</title><meta name="description" content="'+esc(d.summary.slice(0,155))+'"><link rel="stylesheet" href="../style.css"><script src="../copy-prompts.js" defer></script></head><body><header><a class="logo" href="../">✳ НейроПрактика</a></header><article class="article"><a class="back" href="../">← Все инструкции</a><h1>'+esc(d.title)+'</h1><p>'+esc(d.summary)+'</p>'+audience+lead+prep+sections+worked+check+limitations+'<h2>Готовые промпты</h2><ol>'+prompts+'</ol><h2>Частые ошибки</h2><ul>'+mistakes+'</ul><h2>Вопросы и ответы</h2>'+faq+sources+'</article><footer>НейроПрактика</footer></body></html>';
+ const html='<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(d.title)+' — НейроПрактика</title><meta name="description" content="'+esc(d.summary.slice(0,155))+'"><link rel="stylesheet" href="../style.css"><script src="../copy-prompts.js" defer></script></head><body><header><a class="logo" href="../">✳ НейроПрактика</a></header><article class="article"><a class="back" href="../">← Все инструкции</a><h1>'+esc(d.title)+'</h1><p>'+esc(d.summary)+'</p>'+frontier+audience+lead+prep+sections+worked+check+limitations+'<h2>Готовые промпты</h2><ol>'+prompts+'</ol><h2>Частые ошибки</h2><ul>'+mistakes+'</ul><h2>Вопросы и ответы</h2>'+faq+sources+'</article><footer>НейроПрактика</footer></body></html>';
  fs.mkdirSync('articles',{recursive:true});fs.writeFileSync(loc,html);
  released.add(d.slug);
  manifest.push({href:'./'+loc,title:d.title,description:d.summary,category:'ИИ · ИНСТРУКЦИИ'});
