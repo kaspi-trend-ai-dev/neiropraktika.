@@ -47,7 +47,7 @@ for(const {file,data:d} of drafts){
  let report={pass:false,reasons:[],needsExternalFactCheck:true};
  if(reasons.length===0){
   try{report=await editorialReview(d);}catch(e){reasons.push('AI editorial check unavailable: '+e.message);}
-  if(report.pass!==true)reasons.push(...report.reasons.length?report.reasons:['AI editor did not approve']);
+  if(report.pass!==true)reasons.push(...(report.reasons.length ? report.reasons : ['AI editor did not approve']));
   if(report.duplicateOf)reasons.push('Semantic duplicate: '+report.duplicateOf);
   if(report.needsExternalFactCheck)reasons.push('Unverified factual claims need source checking');
  }
