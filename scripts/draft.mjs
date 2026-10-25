@@ -52,7 +52,8 @@ if(obj.prompts.some(x=>String(x).length<85))throw Error('Prompts too generic');
 if(JSON.stringify(obj).length<4500)throw Error('Article too superficial');
 fs.mkdirSync('drafts',{recursive:true});
 fs.writeFileSync(path.join('drafts',next.id+'.json'),JSON.stringify({
- intent:next.intent,slug:next.id,category:next.category||'practical',reviewStatus:'pending',
- sourceAudit:{verified:false},...obj
+ ...obj,
+ intent:next.intent,slug:next.id,category:next.category||'practical',
+ reviewStatus:'pending',sourceAudit:{verified:false}
 },null,2)+'\n');
 console.log('Generated detailed draft for review: '+next.id);
