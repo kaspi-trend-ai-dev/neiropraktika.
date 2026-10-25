@@ -1,0 +1,51 @@
+name: Approve CapCut tutorial after editorial review
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: Article to approve
+        type: choice
+        required: true
+        options:
+          - capcut-subtitles-reels
+      attestation:
+        description: 'After reading the tutorial and official source, type ПРОВЕРЕНО'
+        type: string
+        required: true
+permissions:
+  contents: write
+concurrency:
+  group: capcut-editorial-approval
+  cancel-in-progress: false
+jobs:
+  approve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Approve only after real human attestation and fresh audit
+        env:
+          REVIEWED_SLUG: ${{ inputs.slug }}
+          REVIEW_ATTESTATION: ${{ inputs.attestation }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            node scripts/approve-reviewed.mjs
+            git add "drafts/$REVIEWED_SLUG.json"
+            git commit -m "Human-approved CapCut tutorial with current source evidence"
+            if git push origin HEAD:main; then
+              echo "Attestation recorded; publication workflow will render the approved article."
+              exit 0
+            fi
+            sleep "$((2 * attempt))"
+          done
+          echo "main changed too often. No approval saved; retry the workflow." >&2
+          exit 1
