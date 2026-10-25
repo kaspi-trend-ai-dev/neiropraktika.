@@ -1,0 +1,58 @@
+{
+  "auditMethod": "static risk screening; NOT independent factual verification",
+  "results": [
+    {
+      "slug": "chatgpt-excel",
+      "status": "approved",
+      "issues": [],
+      "sourceCount": 2,
+      "manualSourceVerified": false
+    },
+    {
+      "slug": "chatgpt-kartinki",
+      "status": "approved",
+      "issues": [
+        "Absolute claim should be scrutinized"
+      ],
+      "sourceCount": 1,
+      "manualSourceVerified": false
+    },
+    {
+      "slug": "chatgpt-perevod",
+      "status": "approved",
+      "issues": [
+        "No primary source links"
+      ],
+      "sourceCount": 0,
+      "manualSourceVerified": false
+    },
+    {
+      "slug": "chatgpt-pismo",
+      "status": "approved",
+      "issues": [
+        "No primary source links",
+        "Absolute claim should be scrutinized"
+      ],
+      "sourceCount": 0,
+      "manualSourceVerified": false
+    },
+    {
+      "slug": "chatgpt-plan",
+      "status": "approved",
+      "issues": [
+        "No primary source links"
+      ],
+      "sourceCount": 0,
+      "manualSourceVerified": false
+    },
+    {
+      "slug": "chatgpt-ucheba",
+      "status": "approved",
+      "issues": [
+        "No primary source links"
+      ],
+      "sourceCount": 0,
+      "manualSourceVerified": false
+    }
+  ]
+}
