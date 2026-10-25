@@ -11,6 +11,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: neiropraktika-report-writes
+  cancel-in-progress: false
 jobs:
   pilot:
     runs-on: ubuntu-latest
@@ -26,15 +29,9 @@ jobs:
       - name: Review three practical articles without publishing
         run: node scripts/pilot-three.mjs
       - name: Save pilot report
-        run: |
-          git add reports/pilot-three.json
-          if ! git diff --cached --quiet; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "Update practical tutorials pilot status"
-            git push
-          fi
+        run: bash scripts/push-report-safely.sh 'Update practical tutorials pilot status' reports/pilot-three.json
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: three-tutorials-pilot-report
           path: reports/pilot-three.json
