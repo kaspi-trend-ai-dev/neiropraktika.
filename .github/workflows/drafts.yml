@@ -29,6 +29,9 @@ jobs:
           OPENAI_MODEL: gpt-4.1-mini
         run: node scripts/draft.mjs
       - name: Review pending drafts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_REVIEW_MODEL: gpt-4.1-mini
         run: node scripts/review-drafts.mjs
       - name: Build approved pages
         run: node scripts/publish-approved.mjs
