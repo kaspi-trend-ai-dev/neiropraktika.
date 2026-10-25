@@ -1,10 +1,12 @@
 import fs from 'node:fs';
-import {retrieveOfficialSource,validateFactJudgments} from './fact-check-utils.mjs';
+import {retrieveOfficialSource,validateFactJudgments,sha256} from './fact-check-utils.mjs';
 
 const ALL=process.argv.includes('--all');
 const SINGLE=(process.argv.find(x=>x.startsWith('--slug='))||'').slice(7);
 const OPENAI_MODEL=process.env.OPENAI_FACT_MODEL||'gpt-4.1-mini';
 const catalog=JSON.parse(fs.readFileSync('data/official-sources.json','utf8'));
+const snapshots=JSON.parse(fs.readFileSync('data/source-snapshots.json','utf8'));
+const snapshotByURL=new Map(snapshots.map(s=>[s.url,s]));
 const drafts=fs.readdirSync('drafts').filter(f=>f.endsWith('.json')).sort()
  .map(f=>JSON.parse(fs.readFileSync('drafts/'+f,'utf8')));
 const selected=drafts.filter(d=>SINGLE?d.slug===SINGLE:ALL?true:
@@ -27,8 +29,24 @@ function blocks(d){
 async function sourceFor(s){
  const key=s.url;
  if(!cachedSources.has(key)){
-  // Cache pending promise as well to avoid duplicated requests.
-  cachedSources.set(key,retrieveOfficialSource(key));
+  cachedSources.set(key,(async()=>{
+   try {
+    const item=await retrieveOfficialSource(key);
+    return {...item,mode:'live_official_page'};
+   }catch(e){
+    // OpenAI Help Center currently rejects GitHub Actions requests with HTTP 403.
+    // The fallback is a short, manually transcribed excerpt, NOT a live fact check.
+    if(!String(e.message||e).includes('Source HTTP 403'))throw e;
+    const snap=snapshotByURL.get(key);
+    if(!snap)throw e;
+    const timestamp=Date.parse(snap.reviewedAt+'T00:00:00Z');
+    const age=Date.now()-timestamp;
+    if(!Number.isFinite(age)||age<0||age>7*86400000)throw Error('Official snapshot expired; live source HTTP 403');
+    const sample=(snap.quotes||[]).join('\n');
+    if(sample.trim().length<26)throw Error('Offline source excerpt not sufficient');
+    return {url:key,text:sample,sha256:sha256(sample),mode:'dated_excerpt_not_live',snapshotDate:snap.reviewedAt};
+   }
+  })());
  }
  return cachedSources.get(key);
 }
@@ -76,8 +94,8 @@ for(const d of selected){
  for(const ref of refs.slice(0,4)){
   try{
    const s=await sourceFor(ref);
-   live.push({url:s.url,text:s.text});
-   row.sources.push({title:ref.title,url:s.url,sha256:s.sha256,readableChars:s.text.length,loaded:true});
+   live.push({url:s.url,text:s.text,mode:s.mode});
+   row.sources.push({title:ref.title,url:s.url,sha256:s.sha256,readableChars:s.text.length,loaded:true,mode:s.mode,snapshotDate:s.snapshotDate||null});
   }catch(e){
    row.sources.push({title:ref.title,url:ref.url,loaded:false,error:String(e.message||e).slice(0,200)});
    row.issues.push('Источник недоступен: '+ref.url);
@@ -91,12 +109,16 @@ for(const d of selected){
   row.verdict=checked.status;
   row.issues=checked.issues;
   row.checks=checked.checks;
+  if(live.some(s=>s.mode!=='live_official_page')){
+   row.verdict='blocked';
+   row.issues.push('Источники доступны лишь как датированные выдержки; требуется повторная проверка живой страницы.');
+  }
  }catch(e){row.issues.push('Проверка не завершена: '+String(e.message||e).slice(0,220));}
  console.log('Fact audit '+d.slug+': '+row.verdict+', issues='+row.issues.length);
 }
 const blocked=results.filter(r=>r.verdict!=='candidate_for_human_review').length;
 const report={
- auditMethod:'Live official-page retrieval + AI claims comparison + exact source-quote matching; not a human fact check',
+ auditMethod:'Official-page retrieval or dated excerpt fallback + AI content-block review + exact quote checks. Dated excerpts NEVER authorize publication.',
  model:OPENAI_MODEL,checkedAt:new Date().toISOString(),
  total:results.length,blocked,candidates:results.length-blocked,
  notes:'Passing the automated check does not authorize auto-publishing. Existing publication and human approval gates remain in force.',
