@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {practicalIssues,sourceIssues,detectTopicCollisions} from './quality-rules.mjs';
+import {practicalIssues,sourceIssues,detectTopicCollisions,articleContentHash} from './quality-rules.mjs';
 
 const sample={
  slug:'reels-from-review',intent:'Как создать Reels из отзыва покупателя',
@@ -30,3 +30,12 @@ assert.deepEqual(overlap.map(x=>x.slug),['same-purpose'],'Identify exact duplica
 const honest={...sample,title:'Гарантированный заработок без затрат'};
 assert.ok(practicalIssues(honest).some(x=>x.includes('guaranteed')),'Reject ungrounded income guarantees');
 console.log('All quality checks passed');
+
+const reviewed={...sample,sourceAudit:{verified:true,reviewer:'human',verifiedAt:'2026-10-25',reviewNotes:'Primary documentation inspected'}};
+reviewed.sourceAudit.contentHash=articleContentHash(reviewed);
+assert.deepEqual(sourceIssues(reviewed),[],'Matching reviewed draft fingerprint should pass structural source gate');
+const changed={...reviewed,steps:[...reviewed.steps,{heading:'New unexpected claim',text:'An unexpected new claim has been inserted without review.'}]};
+assert.ok(sourceIssues(changed).some(x=>x.includes('fingerprint mismatch')),'Any edit after review invalidates approval');
+const changedSources={...reviewed,sources:[{title:'New unrelated documentation',url:'https://example.com/other'}]};
+assert.ok(sourceIssues(changedSources).some(x=>x.includes('fingerprint mismatch')),'Source changes invalidate approval');
+console.log('Review fingerprint tests passed');
