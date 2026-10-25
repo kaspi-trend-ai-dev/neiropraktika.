@@ -42,7 +42,7 @@ jobs:
         run: node scripts/check-publication.mjs
       - name: Save generated content
         run: |
-          git add -A -- drafts articles.json reports/fact-check.json
+          git add -A -- drafts articles.json reports/fact-check.json reports/FACT-STATUS.md
           if [ -d articles ]; then git add -A -- articles; fi
           if ! git diff --cached --quiet; then
             git config user.name "github-actions[bot]"
