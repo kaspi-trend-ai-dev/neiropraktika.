@@ -2,7 +2,7 @@ name: Content quality audit
 on:
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -12,6 +12,15 @@ jobs:
         with:
           node-version: '22'
       - run: node scripts/audit-content.mjs
+      - name: Save audit report in repository
+        run: |
+          git add reports/content-audit.json
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Update content audit report"
+            git push
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: neiropraktika-content-audit
