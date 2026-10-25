@@ -35,7 +35,7 @@ async function editorialReview(d){
  return result;
 }
 for(const {file,data:d} of drafts){
- if(d.reviewStatus!=='pending')continue;
+ if(d.reviewStatus!=='pending' && !(d.reviewStatus==='needs_review' && (d.reviewNotes||[]).some(x=>x.includes('missing OPENAI_API_KEY')||x.includes('AI editorial check unavailable'))))continue;
  const reasons=[];
  if(!d.slug||!d.intent||!d.title||!d.summary||!Array.isArray(d.steps)||d.steps.length<5||!Array.isArray(d.prompts)||d.prompts.length<3||!Array.isArray(d.faq)||d.faq.length<3)reasons.push('Incomplete article structure');
  if(JSON.stringify(d).length<3000)reasons.push('Not sufficiently detailed');
