@@ -63,7 +63,14 @@
     }
   ],
   "reviewNotes": [
-    "Passed structure and model-based editorial review; external fact verification not performed"
+    "Passed structure and model-based editorial review; external fact verification not performed",
+    "Added general official reference; individual claims not independently fact-checked."
   ],
-  "reviewMethod": "structure-and-ai-editor-v2"
+  "reviewMethod": "structure-and-ai-editor-v2",
+  "sources": [
+    {
+      "title": "О ChatGPT — OpenAI",
+      "url": "https://help.openai.com/en/articles/12677804-what-is-chatgpt"
+    }
+  ]
 }
