@@ -34,6 +34,21 @@ export function htmlToText(html){
   .trim();
  return decoded.slice(0,75000);
 }
+// Numbered excerpts are derived by code from the actual downloaded source.
+// The model selects a passage index; it cannot fabricate the cited text.
+export function sourceSegments(text){
+ const out=[];
+ for(const part of String(text||'').split(/\n+/)){
+  const line=part.trim();
+  if(line.length<30)continue;
+  // Retain reading order and preserve contiguous evidence even for long paragraphs.
+  for(let pos=0;pos<line.length;pos+=600){
+   const segment=line.slice(pos,pos+600).trim();
+   if(segment.length>=28)out.push(segment);
+  }
+ }
+ return out.slice(0,100);
+}
 export function quoteAppearsInSource(quote, source){
  const q=normalizedText(quote),s=normalizedText(source);
  return q.length>=26&&q.length<=380&&s.includes(q);
@@ -77,7 +92,11 @@ export function validateFactJudgments(units,claims,sources){
   const index=c.sourceIndex;
   const evidence=typeof c.quote==='string'?c.quote:'';
   const source=Number.isInteger(index)?sources[index]:undefined;
-  const supported=verdict==='supported'&&source&&quoteAppearsInSource(evidence,source.text);
+  const passages=source?sourceSegments(source.text):[];
+  const selected=Number.isInteger(c.passageIndex)?passages[c.passageIndex]:undefined;
+  const supported=verdict==='supported'&&source&&(
+   selected?.length>=28 || quoteAppearsInSource(evidence,source.text)
+  );
   if(!['supported','instructional','unsupported','contradicted'].includes(verdict)){
    issues.push('Unrecognized verdict for '+c.id);
   }else if(verdict==='supported'&&!supported){
@@ -90,7 +109,8 @@ export function validateFactJudgments(units,claims,sources){
    claim:String(c.claim||'').slice(0,400),
    note:String(c.note||'').slice(0,500),
    sourceUrl:supported?source.url:null,
-   quote:supported?evidence:null
+   quote:supported?(selected||evidence).slice(0,360):null,
+   passageIndex:supported&&selected?c.passageIndex:null
   });
  }
  for(const id of expected)if(!seen.has(id))issues.push('No verification for '+id);
