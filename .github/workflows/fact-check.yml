@@ -1,0 +1,41 @@
+name: Verify article facts against official sources
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fact-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify safety tests
+        run: |
+          node --check scripts/fact-check.mjs
+          node scripts/test-fact-check.mjs
+      - name: Fetch official sources and compare claims
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_FACT_MODEL: gpt-4.1-mini
+        run: node scripts/fact-check.mjs --all
+      - name: Report summary
+        run: |
+          node -e "const r=require('./reports/fact-check.json');console.log('Fact-checked:',r.total,'Blocked:',r.blocked,'Candidates:',r.candidates);"
+          node -e "const r=require('./reports/fact-check.json');require('fs').appendFileSync(process.env.GITHUB_STEP_SUMMARY,'# Fact verification\\nChecked: '+r.total+'\\nBlocked: '+r.blocked+'\\nCandidates for human review: '+r.candidates+'\\nAutomation does not grant publication approval.\\n')"
+      - name: Save detailed report in main
+        run: |
+          git add reports/fact-check.json
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Refresh official-source evidence audit"
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fact-check-evidence
+          path: reports/fact-check.json
