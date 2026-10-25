@@ -6,7 +6,6 @@ on:
         description: 'Only after reading the article and the official source, confirm ПРОВЕРЕНО'
         type: string
         required: true
-        default: 'ПРОВЕРЕНО'
 permissions:
   contents: write
 concurrency:
