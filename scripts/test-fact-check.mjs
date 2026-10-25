@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {isOfficialUrl,htmlToText,quoteAppearsInSource,validateFactJudgments} from './fact-check-utils.mjs';
+import {isOfficialUrl,htmlToText,quoteAppearsInSource,validateFactJudgments,sourceSegments} from './fact-check-utils.mjs';
 
 assert.equal(isOfficialUrl('https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview'),true);
 assert.equal(isOfficialUrl('http://help.openai.com/anything'),false);
@@ -30,3 +30,18 @@ assert.equal(contradicted.status,'blocked');
 const unsupported=validateFactJudgments(units,[{id:'summary',verdict:'unsupported',claim:'Unproven feature'}],sources);
 assert.equal(unsupported.status,'blocked');
 console.log('Fact audit safety tests passed — including invented evidence and absent claims');
+
+const passages=sourceSegments(text);
+const phraseIndex=passages.findIndex(s=>s.includes('ChatGPT can analyze uploaded spreadsheets'));
+assert.ok(phraseIndex>=0,'Actual source paragraph should be indexable');
+const grounded=validateFactJudgments(units,[{
+ id:'summary',verdict:'supported',claim:'Can analyze files',
+ sourceIndex:0,passageIndex:phraseIndex,note:'Supported directly'
+}],sources);
+assert.equal(grounded.status,'candidate_for_human_review','Exact source paragraphs should be accepted without AI copying quote');
+assert.ok(grounded.checks[0].quote.includes('ChatGPT can analyze uploaded spreadsheets'),'Grounded quote must come directly from source');
+const inventedPassage=validateFactJudgments(units,[{
+ id:'summary',verdict:'supported',claim:'False claim',sourceIndex:0,passageIndex:900000
+}],sources);
+assert.equal(inventedPassage.status,'blocked','Invented passage index must not be accepted');
+console.log('Source paragraph citation tests passed');
