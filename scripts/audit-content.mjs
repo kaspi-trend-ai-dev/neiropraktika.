@@ -1,27 +1,50 @@
 import fs from 'node:fs';
-const normalize=s=>String(s||'').toLowerCase().replace(/ё/g,'е').replace(/[^a-zа-я0-9]+/g,' ').trim();
-const tokenSet=s=>new Set(normalize(s).split(' ').filter(t=>t.length>3));
-const sim=(a,b)=>{const A=tokenSet(a),B=tokenSet(b);return [...A].filter(t=>B.has(t)).length/Math.max(1,Math.min(A.size,B.size));};
-const files=fs.readdirSync('drafts').filter(x=>x.endsWith('.json'));
-const docs=files.map(f=>JSON.parse(fs.readFileSync('drafts/'+f,'utf8')));
+import {practicalIssues,sourceIssues,detectTopicCollisions} from './quality-rules.mjs';
+
+const drafts=fs.readdirSync('drafts').filter(x=>x.endsWith('.json')).sort()
+ .map(f=>JSON.parse(fs.readFileSync('drafts/'+f,'utf8')));
+const staticPages=[
+ {slug:'prompty-chatgpt',title:'Как правильно писать промпты в ChatGPT',intent:'Как правильно писать промпты в ChatGPT'},
+ {slug:'rezume-chatgpt',title:'Как составить резюме с ChatGPT',intent:'Как составить резюме с ChatGPT'},
+ {slug:'tovar-chatgpt',title:'Как написать описание товара через ChatGPT',intent:'Как написать описание товара через ChatGPT'}
+];
+const known=[...staticPages,...drafts];
 const results=[];
-for(const d of docs) {
- const text=[d.summary,...(d.steps||[]).map(x=>x.text),...(d.faq||[]).map(x=>x.answer)].join(' ');
+for(const d of drafts){
  const issues=[];
- const citations=Array.isArray(d.sources)?d.sources:[];
- if(!citations.length)issues.push('No primary source links');
- for(const s of citations) {
-   try{const u=new URL(s.url);if(u.protocol!=='https:'||!s.title||!u.hostname)issues.push('Invalid cited source');}
-   catch{issues.push('Invalid cited source');}
+ if(!d.category){
+  issues.push('Legacy generic article: consider adding a reproducible example and result');
+ } else {
+  issues.push(...practicalIssues(d));
  }
- if(/не (?:может|умеет|поддерживает|обрабатывает|генерирует)/i.test(text)) issues.push('Product limitation claim requires primary source verification');
- if(/всегда|гарантированно|абсолютно|никогда|100%/i.test(text))issues.push('Absolute claim should be scrutinized');
- const duplicates=docs.filter(x=>x.slug!==d.slug&&sim(x.intent,d.intent)>.82).map(x=>x.slug);
- if(duplicates.length)issues.push('Potential duplicated intent: '+duplicates.join(', '));
- if(!Array.isArray(d.prompts)||d.prompts.length<3)issues.push('Insufficient ready-to-use examples');
- results.push({slug:d.slug,status:d.reviewStatus,issues,sourceCount:citations.length,manualSourceVerified:d.sourceAudit?.verified===true&&d.sourceAudit?.reviewer==='human'});
+ issues.push(...sourceIssues(d));
+ const duplicates=detectTopicCollisions(d,known);
+ if(duplicates.length)issues.push('Possible same search intent: '+duplicates.map(x=>x.slug).join(', '));
+ const text=[d.summary,...(d.steps||[]).map(x=>x.text),...(d.faq||[]).map(x=>x.answer)].join(' ');
+ if(/chatgpt не (?:умеет|может|генерирует) изображения(?: напрямую)?/i.test(text))issues.push('Known incorrect limitation: images in ChatGPT');
+ if(/chatgpt не (?:умеет|может|обрабатывает) (?:загруженные )?файлы(?: напрямую)?/i.test(text))issues.push('Known incorrect limitation: file analysis in ChatGPT');
+ if(/(?:гарантированно|абсолютно|никогда|100% доход)/i.test(text))issues.push('Absolute or guaranteed claim needs evidence');
+ results.push({
+  slug:d.slug,title:d.title,
+  publicationStatus:d.reviewStatus,
+  verificationStatus:d.sourceAudit?.verified===true&&d.sourceAudit?.reviewer==='human'?'manual-check-recorded':'independent-check-not-recorded',
+  issueCount:[...new Set(issues)].length,
+  issues:[...new Set(issues)]
+ });
 }
+for(const d of staticPages){
+ const file=d.slug+'.html';
+ results.push({slug:d.slug,title:d.title,publicationStatus:fs.existsSync(file)?'published-static':'missing',
+  verificationStatus:'independent-check-not-recorded',issueCount:1,
+  issues:['Original static tutorial: requires primary-source and hands-on review']});
+}
+const flagged=results.filter(x=>x.issueCount>0);
 fs.mkdirSync('reports',{recursive:true});
-fs.writeFileSync('reports/content-audit.json',JSON.stringify({auditMethod:'static risk screening; NOT independent factual verification',results},null,2)+'\n');
-console.log('Audited',results.length,'draft records;',results.filter(x=>x.issues.length).length,'flagged.');
-for(const r of results) if(r.issues.length)console.log(r.slug+': '+r.issues.join('; '));
+fs.writeFileSync('reports/content-audit.json',JSON.stringify({
+ description:'Content risk audit. It does not independently establish factual correctness.',
+ articlesChecked:results.length,
+ flaggedCount:flagged.length,
+ results
+},null,2)+'\n');
+console.log('Checked:',results.length,'Flagged:',flagged.length);
+for(const result of flagged)console.log(result.slug+': '+result.issues.join('; '));
