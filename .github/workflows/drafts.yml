@@ -31,13 +31,18 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_REVIEW_MODEL: gpt-4.1-mini
         run: node scripts/review-drafts.mjs
+      - name: Audit new claims against live official documentation
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_FACT_MODEL: gpt-4.1-mini
+        run: node scripts/fact-check.mjs
       - name: Build approved pages
         run: node scripts/publish-approved.mjs
       - name: Verify output before publication
         run: node scripts/check-publication.mjs
       - name: Save generated content
         run: |
-          git add -A -- drafts articles.json
+          git add -A -- drafts articles.json reports/fact-check.json
           if [ -d articles ]; then git add -A -- articles; fi
           if ! git diff --cached --quiet; then
             git config user.name "github-actions[bot]"
