@@ -126,7 +126,7 @@ const readable=[
  '',
  '| Статья | Итог | Проблем |',
  '|---|---|---:|',
- ...results.map(r=>'| '+String(r.title||r.slug).replace(/\\|/g,' ')+' | '+r.verdict+' | '+r.issues.length+' |'),
+ ...results.map(r=>'| '+String(r.title||r.slug).replace(/\|/g,' ')+' | '+r.verdict+' | '+r.issues.length+' |'),
  '',
  '## Что нужно исправить',
  '',
