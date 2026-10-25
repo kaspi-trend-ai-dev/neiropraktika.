@@ -1,8 +1,18 @@
-name: Approve CapCut after reading article and official source
-# Running this manual-only workflow records the GitHub user's publication approval.
-# Do not run until you have personally read both article and original documentation.
+name: Approve CapCut tutorial after editorial review
 on:
   workflow_dispatch:
+    inputs:
+      slug:
+        description: Article to approve
+        type: choice
+        required: true
+        options:
+          - capcut-subtitles-reels
+      attestation:
+        description: 'Only after reading the article and the official source, confirm ПРОВЕРЕНО'
+        type: string
+        required: true
+        default: 'ПРОВЕРЕНО'
 permissions:
   contents: write
 concurrency:
@@ -20,8 +30,8 @@ jobs:
           node-version: '22'
       - name: Record human approval and verify current official CapCut documentation
         env:
-          REVIEWED_SLUG: capcut-subtitles-reels
-          EDITORIAL_APPROVAL_ACTION: confirmed-by-manual-workflow-dispatch
+          REVIEWED_SLUG: ${{ inputs.slug }}
+          REVIEW_ATTESTATION: ${{ inputs.attestation }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_FACT_MODEL: gpt-4.1-mini
         run: |
