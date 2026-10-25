@@ -21,7 +21,9 @@ async function editorialReview(d){
  const instructions=[
  'Ты редактор русскоязычных практических инструкций по ИИ. Проведи строгую НЕЗАВИСИМУЮ ОТ ГЕНЕРАЦИИ модельную проверку.',
  'Ответ только JSON: {"pass": boolean, "reasons": string[], "duplicateOf": string|null, "needsExternalFactCheck": boolean}.',
- 'pass=true ТОЛЬКО если статья действительно решает запрос, примеры конкретны, описанные действия правдоподобны, текст достаточно подробный, а поисковый интент не повторяется.',
+ 'pass=true ТОЛЬКО если статья решает запрос, показывает воспроизводимый конечный продукт, пример входных и выходных данных, применимые шаблоны и проверяемые шаги; поисковый интент не повторяется.',
+ 'Отклоняй бессодержательные советы, повторяющиеся пункты, выдуманные примеры использования и выдуманные свойства инструментов. Оцени: можно ли следовать инструкции без дополнительных догадок?',
+ 'Для заработка требуй честный сценарий реальной услуги и понятный план действий, но не обещание конкретного дохода.',
  'Если новая статья отвечает на ту же задачу другими словами, duplicateOf=slug и pass=false.',
  'Если есть сведения о текущих ценах, доступности, действующих интерфейсах, законодательстве, характеристиках продуктов, цифры/статистика или неподтвержденные источники, needsExternalFactCheck=true и pass=false.',
  'Модельная оценка НЕ является проверкой по первоисточникам. При сомнении pass=false. Не считай стилистическую оценку доказательством достоверности.',
@@ -42,6 +44,14 @@ for(const {file,data:d} of drafts){
  if(similarity(d.title,d.intent)<.38)reasons.push('Title mismatch');
  if(new Set((d.steps||[]).map(s=>normalize(s.heading))).size!==(d.steps||[]).length)reasons.push('Repeated headings');
  if((d.prompts||[]).some(s=>String(s).length<35))reasons.push('Prompts lack concrete detail');
+ if(d.category){
+  if(!d.result||!d.audience||!Array.isArray(d.inputs)||d.inputs.length<2)reasons.push('Missing audience, preparation or concrete result');
+  if(!d.example?.input||!d.example?.output||String(d.example.output).length<80)reasons.push('Missing reproducible input and output example');
+  if(!Array.isArray(d.checklist)||d.checklist.length<3)reasons.push('Missing practical verification checklist');
+  if((d.steps||[]).some(s=>String(s.text||'').length<90))reasons.push('Instructions too generic');
+  if((d.prompts||[]).some(s=>String(s).length<85))reasons.push('Prompt templates too shallow');
+  if(!Array.isArray(d.limitations)||d.limitations.length===0)reasons.push('No limitations or relevant cautions');
+ }
  const prior=drafts.find(x=>x.data.slug!==d.slug && x.data.reviewStatus==='approved' && (normalize(x.data.intent)===normalize(d.intent)||similarity(x.data.intent,d.intent)>.82));
  if(prior)reasons.push('Topic overlaps approved article '+prior.data.slug);
  let report={pass:false,reasons:[],needsExternalFactCheck:true};
