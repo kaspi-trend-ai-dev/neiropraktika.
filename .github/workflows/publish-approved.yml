@@ -1,0 +1,28 @@
+name: Publish approved articles
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'drafts/**'
+      - 'scripts/publish-approved.mjs'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/publish-approved.mjs
+      - name: Commit approved pages
+        run: |
+          if [ -n "$(git status --porcelain -- articles/ articles.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add articles/ articles.json
+            git commit -m "Publish reviewed tutorials"
+            git push
+          fi
