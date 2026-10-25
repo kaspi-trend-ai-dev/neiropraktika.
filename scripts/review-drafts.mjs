@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {practicalIssues,detectTopicCollisions,sourceIssues} from './quality-rules.mjs';
 
 const root='drafts';
 const files=fs.readdirSync(root).filter(f=>f.endsWith('.json')).sort();
@@ -44,6 +45,12 @@ for(const {file,data:d} of drafts){
  if(similarity(d.title,d.intent)<.38)reasons.push('Title mismatch');
  if(new Set((d.steps||[]).map(s=>normalize(s.heading))).size!==(d.steps||[]).length)reasons.push('Repeated headings');
  if((d.prompts||[]).some(s=>String(s).length<35))reasons.push('Prompts lack concrete detail');
+ if(d.category){
+  reasons.push(...practicalIssues(d));
+  reasons.push(...sourceIssues(d));
+ }
+ const duplicateRisk=detectTopicCollisions(d,existing);
+ if(duplicateRisk.length)reasons.push('Potential duplicate topic: '+duplicateRisk.map(x=>x.slug).join(', '));
  if(d.category){
   if(!d.result||!d.audience||!Array.isArray(d.inputs)||d.inputs.length<2)reasons.push('Missing audience, preparation or concrete result');
   if(!d.example?.input||!d.example?.output||String(d.example.output).length<80)reasons.push('Missing reproducible input and output example');
