@@ -1,9 +1,11 @@
 {
   "auditMethod": "Live official-page retrieval + independent AI content-block review + exact quote checks. No snapshot substitution.",
   "model": "gpt-4.1-mini",
-  "checkedAt": "2026-10-25T18:18:58.371Z",
+  "checkedAt": "2026-10-25T18:20:29.108Z",
   "total": 7,
   "blocked": 7,
+  "sourceUnavailable": 7,
+  "factBlocked": 0,
   "candidates": 0,
   "notes": "Passing the automated check does not authorize auto-publishing. Existing publication and human approval gates remain in force.",
   "results": [
@@ -11,7 +13,7 @@
       "slug": "chatgpt-excel",
       "title": "ChatGPT для Excel: как писать формулы и разбирать таблицы",
       "currentStatus": "approved",
-      "verdict": "blocked",
+      "verdict": "source_unavailable",
       "independentlyHumanReviewed": false,
       "sources": [
         {
@@ -37,7 +39,7 @@
       "slug": "chatgpt-kartinki",
       "title": "Как создавать изображения в ChatGPT: от идеи до готового запроса",
       "currentStatus": "approved",
-      "verdict": "blocked",
+      "verdict": "source_unavailable",
       "independentlyHumanReviewed": false,
       "sources": [
         {
@@ -56,7 +58,7 @@
       "slug": "chatgpt-perevod",
       "title": "Как переводить тексты через ChatGPT: инструкция с примерами",
       "currentStatus": "approved",
-      "verdict": "blocked",
+      "verdict": "source_unavailable",
       "independentlyHumanReviewed": false,
       "sources": [
         {
@@ -75,7 +77,7 @@
       "slug": "chatgpt-pismo",
       "title": "Как написать деловое письмо через ChatGPT: готовые промпты",
       "currentStatus": "approved",
-      "verdict": "blocked",
+      "verdict": "source_unavailable",
       "independentlyHumanReviewed": false,
       "sources": [
         {
@@ -94,7 +96,7 @@
       "slug": "chatgpt-plan",
       "title": "Как составить план дня в ChatGPT: инструкция и шаблон",
       "currentStatus": "approved",
-      "verdict": "blocked",
+      "verdict": "source_unavailable",
       "independentlyHumanReviewed": false,
       "sources": [
         {
@@ -113,7 +115,7 @@
       "slug": "chatgpt-ucheba",
       "title": "Как использовать ChatGPT для учёбы: 12 полезных способов и примеры запросов",
       "currentStatus": "approved",
-      "verdict": "blocked",
+      "verdict": "source_unavailable",
       "independentlyHumanReviewed": false,
       "sources": [
         {
@@ -132,7 +134,7 @@
       "slug": "reels-script-from-review",
       "title": "Как превратить отзыв покупателя в сценарий Reels: хук, кадры, озвучка",
       "currentStatus": "needs_review",
-      "verdict": "blocked",
+      "verdict": "source_unavailable",
       "independentlyHumanReviewed": false,
       "sources": [
         {
