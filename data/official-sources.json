@@ -1,90 +1,166 @@
 {
   "shorts-interview-ai": [
     {
-      "title": "Официальный обзор возможностей ChatGPT — OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
+    },
+    {
+      "title": "Автоматические субтитры — официальная инструкция CapCut",
+      "url": "https://www.capcut.com/help/how-to-recognise-subtitles"
     }
   ],
   "capcut-subtitles-reels": [
     {
-      "title": "Автоматические субтитры CapCut — официальная инструкция",
+      "title": "Автоматические субтитры — официальная инструкция CapCut",
       "url": "https://www.capcut.com/help/how-to-recognise-subtitles"
     }
   ],
   "client-replies-chatgpt": [
     {
-      "title": "Официальный обзор возможностей ChatGPT — OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
     }
   ],
   "video-ad-product-ai": [
     {
-      "title": "Официальный обзор возможностей ChatGPT — OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
+    },
+    {
+      "title": "Создание и редактирование изображений — OpenAI Academy",
+      "url": "https://openai.com/academy/image-generation/"
     }
   ],
   "marketplace-cards-batch": [
     {
-      "title": "Анализ таблиц и файлов — OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/8437071-data-analysis-with-chatgpt"
+      "title": "Анализ таблиц в ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/data-analysis/"
     },
     {
-      "title": "Официальный обзор возможностей ChatGPT — OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
     }
   ],
   "freelance-ai-portfolio": [
     {
-      "title": "Официальный обзор возможностей ChatGPT — OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
+    },
+    {
+      "title": "Как искать идеи и планировать с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/brainstorming/"
     }
   ],
   "podcast-content-repurpose": [
     {
-      "title": "Официальный обзор возможностей ChatGPT — OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
     }
   ],
   "product-photo-ai-creative": [
     {
-      "title": "Создание и редактирование изображений — OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt"
+      "title": "Создание и редактирование изображений — OpenAI Academy",
+      "url": "https://openai.com/academy/image-generation/"
     }
   ],
   "expense-analysis-chatgpt": [
     {
-      "title": "Анализ таблиц и файлов — OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/8437071-data-analysis-with-chatgpt"
+      "title": "Анализ таблиц в ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/data-analysis/"
+    },
+    {
+      "title": "Работа с файлами в ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/working-with-files/"
     }
   ],
   "reels-script-from-review": [
     {
-      "title": "Официальный обзор возможностей ChatGPT — OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
     }
   ],
   "chatgpt-analiz": [
     {
-      "title": "Анализ таблиц и файлов — OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/8437071-data-analysis-with-chatgpt"
+      "title": "Работа с файлами в ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/working-with-files/"
+    },
+    {
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
     }
   ],
   "chatgpt-posty": [
     {
-      "title": "Официальный обзор возможностей ChatGPT — OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
     }
   ],
   "chatgpt-sobesedovanie": [
     {
-      "title": "Официальный обзор возможностей ChatGPT — OpenAI",
-      "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
+    },
+    {
+      "title": "Как искать идеи и планировать с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/brainstorming/"
     }
   ],
   "chatgpt-biznes-plan": [
     {
-      "title": "Официальный обзор возможностей ChatGPT — OpenAI",
+      "title": "Как искать идеи и планировать с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/brainstorming/"
+    },
+    {
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
+    }
+  ],
+  "chatgpt-excel": [
+    {
+      "title": "Анализ таблиц в ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/data-analysis/"
+    },
+    {
+      "title": "Работа с файлами в ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/working-with-files/"
+    }
+  ],
+  "chatgpt-kartinki": [
+    {
+      "title": "Создание и редактирование изображений — OpenAI Academy",
+      "url": "https://openai.com/academy/image-generation/"
+    }
+  ],
+  "chatgpt-pismo": [
+    {
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
+    }
+  ],
+  "chatgpt-plan": [
+    {
+      "title": "Как искать идеи и планировать с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/brainstorming/"
+    },
+    {
+      "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/writing/"
+    }
+  ],
+  "chatgpt-perevod": [
+    {
+      "title": "Возможности ChatGPT — официальная справка OpenAI",
       "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
+    }
+  ],
+  "chatgpt-ucheba": [
+    {
+      "title": "Возможности ChatGPT — официальная справка OpenAI",
+      "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
+    },
+    {
+      "title": "Как искать идеи и планировать с ChatGPT — OpenAI Academy",
+      "url": "https://openai.com/academy/brainstorming/"
     }
   ]
 }
