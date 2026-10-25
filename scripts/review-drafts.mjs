@@ -53,7 +53,8 @@ for(const {file,data:d} of drafts){
  }
  // Conservative rule: no independent source verification exists yet.
  // Model-only approval must never be represented as independently fact-checked.
- d.reviewStatus=reasons.length?'needs_review':'approved';
+ if (reasons.length===0) reasons.push('Requires source verification before publishing');
+ d.reviewStatus='needs_review';
  d.reviewNotes=reasons.length?reasons:['Passed structure and model-based editorial review; external fact verification not performed'];
  d.reviewMethod='structure-and-ai-editor-v2';
  fs.writeFileSync(root+'/'+file,JSON.stringify(d,null,2)+'\n');
