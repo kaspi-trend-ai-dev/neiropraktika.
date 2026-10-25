@@ -67,10 +67,21 @@
     },
     {
       "question": "Можно ли применять ChatGPT для анализа больших таблиц в Excel?",
-      "answer": "ChatGPT помогает с советами и формулами для анализа, но не обрабатывает файлы напрямую. Для больших данных лучше комбинировать его рекомендации с инструментами Excel."
+      "answer": "Да. Вы можете загрузить поддерживаемый файл Excel (.xlsx, .xls) или CSV непосредственно в ChatGPT и попросить проанализировать данные, найти закономерности, составить сводную таблицу или визуализацию. Доступность функций зависит от модели, тарифа и настроек аккаунта. Для важных вычислений проверяйте результаты."
     }
   ],
   "reviewNotes": [
-    "Passed structural and overlap checks; factual accuracy not independently verified"
-  ]
+    "Исправлено ложное утверждение о невозможности анализа загруженных файлов Excel. Возможности подтверждены справкой OpenAI. Остальные инструкции требуют редакционного контроля актуальности."
+  ],
+  "sources": [
+    {
+      "title": "Анализ данных в ChatGPT — справка OpenAI",
+      "url": "https://help.openai.com/ru-ru/articles/8437071-data-analysis-with-chatgpt"
+    },
+    {
+      "title": "Загрузка файлов в ChatGPT — справка OpenAI",
+      "url": "https://help.openai.com/ru-ru/articles/8555545-uploading-files-and-audio-to-chatgpt"
+    }
+  ],
+  "reviewMethod": "manual-source-correction-2026-10-25"
 }
