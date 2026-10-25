@@ -1,10 +1,10 @@
 {
   "auditMethod": "Live official-page retrieval + independent AI content-block review + exact quote checks. No snapshot substitution.",
   "model": "gpt-4.1-mini",
-  "checkedAt": "2026-10-25T18:20:29.108Z",
-  "total": 7,
-  "blocked": 7,
-  "sourceUnavailable": 7,
+  "checkedAt": "2026-10-25T18:36:17.827Z",
+  "total": 9,
+  "blocked": 9,
+  "sourceUnavailable": 9,
   "factBlocked": 0,
   "candidates": 0,
   "notes": "Passing the automated check does not authorize auto-publishing. Existing publication and human approval gates remain in force.",
@@ -43,14 +43,14 @@
       "independentlyHumanReviewed": false,
       "sources": [
         {
-          "title": "Изображения в ChatGPT — OpenAI Help Center",
-          "url": "https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt",
+          "title": "Создание, редактирование и сохранение изображений — официальная справка OpenAI",
+          "url": "https://help.openai.com/en/articles/11084440-images-in-chatgpt",
           "loaded": false,
           "error": "Source HTTP 403"
         }
       ],
       "issues": [
-        "Источник недоступен: https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt"
+        "Источник недоступен: https://help.openai.com/en/articles/11084440-images-in-chatgpt"
       ],
       "checks": []
     },
@@ -131,6 +131,39 @@
       "checks": []
     },
     {
+      "slug": "freelance-ai-portfolio",
+      "title": "Как собрать портфолио ИИ-фрилансера: 3 услуги, примеры работ и предложение клиенту",
+      "currentStatus": "needs_review",
+      "verdict": "source_unavailable",
+      "independentlyHumanReviewed": false,
+      "sources": [
+        {
+          "title": "Какие задачи с текстом выполняет ChatGPT — официальная справка OpenAI",
+          "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview",
+          "loaded": false,
+          "error": "Source HTTP 403"
+        },
+        {
+          "title": "Загрузка файлов и работа с документами — официальная справка OpenAI",
+          "url": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt",
+          "loaded": false,
+          "error": "Source HTTP 403"
+        },
+        {
+          "title": "Управление данными в ChatGPT — официальная справка OpenAI",
+          "url": "https://help.openai.com/en/articles/7730893-data-controls-in-chatgpt",
+          "loaded": false,
+          "error": "Source HTTP 403"
+        }
+      ],
+      "issues": [
+        "Источник недоступен: https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview",
+        "Источник недоступен: https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt",
+        "Источник недоступен: https://help.openai.com/en/articles/7730893-data-controls-in-chatgpt"
+      ],
+      "checks": []
+    },
+    {
       "slug": "reels-script-from-review",
       "title": "Как превратить отзыв покупателя в сценарий Reels: хук, кадры, озвучка",
       "currentStatus": "needs_review",
@@ -138,14 +171,42 @@
       "independentlyHumanReviewed": false,
       "sources": [
         {
-          "title": "Официальный обзор возможностей ChatGPT — OpenAI",
-          "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview",
+          "title": "Как писать и редактировать тексты с ChatGPT — OpenAI Academy",
+          "url": "https://openai.com/academy/writing/",
           "loaded": false,
           "error": "Source HTTP 403"
         }
       ],
       "issues": [
-        "Источник недоступен: https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview"
+        "Источник недоступен: https://openai.com/academy/writing/"
+      ],
+      "checks": []
+    },
+    {
+      "slug": "shorts-interview-ai",
+      "title": "Как сделать 5 Shorts из одного интервью с ИИ: таймкоды, сценарий и монтаж",
+      "currentStatus": "needs_review",
+      "verdict": "source_unavailable",
+      "independentlyHumanReviewed": false,
+      "sources": [
+        {
+          "title": "Что ChatGPT умеет делать с текстом — официальная справка OpenAI",
+          "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview",
+          "loaded": false,
+          "error": "Source HTTP 403"
+        },
+        {
+          "title": "Автоматические субтитры в CapCut — официальная инструкция",
+          "url": "https://www.capcut.com/help/how-to-recognise-subtitles",
+          "sha256": "18243ca81bc9b7855302bab4a847bde293b379cabf1cf0e1dda108383ddcb5b6",
+          "readableChars": 2462,
+          "loaded": true,
+          "mode": "live_official_page",
+          "snapshotDate": null
+        }
+      ],
+      "issues": [
+        "Источник недоступен: https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview"
       ],
       "checks": []
     }
