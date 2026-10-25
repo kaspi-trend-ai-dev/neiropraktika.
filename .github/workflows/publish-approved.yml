@@ -24,20 +24,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Build approved articles
-        run: node scripts/publish-approved.mjs
-      - name: Verify output before publication
-        run: node scripts/check-publication.mjs
-      - name: Commit approved pages
-        run: |
-          git add -A -- articles.json
-          if [ -d articles ]; then git add -A -- articles; fi
-          if ! git diff --cached --quiet; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "Publish reviewed tutorials"
-            git push
-          fi
+      - name: Build, verify and safely save approved pages
+        run: bash scripts/publish-safely.sh
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
