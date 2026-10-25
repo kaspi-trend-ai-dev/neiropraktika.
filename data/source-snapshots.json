@@ -1,0 +1,46 @@
+[
+  {
+    "url": "https://help.openai.com/ru-ru/articles/8437071-data-analysis-with-chatgpt",
+    "reviewedAt": "2026-10-25",
+    "quotes": [
+      "ChatGPT может анализировать загруженные файлы, отвечать на вопросы о данных и создавать таблицы или диаграммы, когда структурированное представление улучшает результат."
+    ]
+  },
+  {
+    "url": "https://help.openai.com/ru-ru/articles/8555545-uploading-files-and-audio-to-chatgpt",
+    "reviewedAt": "2026-10-25",
+    "quotes": [
+      "Загружайте документы, таблицы, презентации, изображения и аудио, чтобы задавать вопросы и работать с их содержимым."
+    ]
+  },
+  {
+    "url": "https://help.openai.com/ru-ru/articles/11084440-images-in-chatgpt",
+    "reviewedAt": "2026-10-25",
+    "quotes": [
+      "ChatGPT Картинки позволяет создавать новые и редактировать существующие изображения в ChatGPT."
+    ]
+  },
+  {
+    "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview",
+    "reviewedAt": "2026-10-25",
+    "quotes": [
+      "Drafting, rewriting, or summarizing content",
+      "Translating between languages"
+    ]
+  },
+  {
+    "url": "https://help.openai.com/ru-ru/articles/9260256-chatgpt-capabilities-overview",
+    "reviewedAt": "2026-10-25",
+    "quotes": [
+      "Писать черновики, перерабатывать тексты или кратко излагать их содержание",
+      "Переводить с одного языка на другой"
+    ]
+  },
+  {
+    "url": "https://help.openai.com/ru-ru/articles/11780217-using-study-mode-in-chatgpt",
+    "reviewedAt": "2026-10-25",
+    "quotes": [
+      "Режим обучения в ChatGPT помогает глубже разобраться в теме."
+    ]
+  }
+]
