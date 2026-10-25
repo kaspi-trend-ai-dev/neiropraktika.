@@ -1,7 +1,7 @@
 {
   "auditMethod": "Live official-page retrieval + independent AI content-block review + exact quote checks. No snapshot substitution.",
   "model": "gpt-4.1-mini",
-  "checkedAt": "2026-10-25T18:47:01.959Z",
+  "checkedAt": "2026-10-25T18:48:51.999Z",
   "total": 10,
   "blocked": 10,
   "sourceUnavailable": 8,
@@ -20,7 +20,7 @@
         {
           "title": "Как распознать и исправить субтитры — официальная инструкция CapCut",
           "url": "https://www.capcut.com/help/how-to-recognise-subtitles",
-          "sha256": "957ba5de84ef64c86bab6f713ebea230fad77b4545d40a05b21ba23d52086c9a",
+          "sha256": "a7ac61bf9afd3bd5384f16b10f9147cd170a8b9f54411c8012446ed26486a77f",
           "readableChars": 2462,
           "loaded": true,
           "mode": "live_official_page",
@@ -28,24 +28,23 @@
         }
       ],
       "issues": [
-        "Source verification failed for result: unsupported",
         "Source verification failed for steps.5: unsupported"
       ],
       "checks": [
         {
           "id": "summary",
           "verdict": "supported",
-          "claim": "Добавить автоматические субтитры к Reels можно средствами CapCut с автораспознаванием и ручной правкой.",
-          "note": "Документация подтверждает наличие функции Auto Caption с распознаванием речи и необходимостью ручной проверки.",
+          "claim": "CapCut позволяет добавить автоматические субтитры к Reels с автораспознаванием речи, выбором языка и ручной корректировкой текста и синхронизации.",
+          "note": "Документ подтверждает наличие функции Auto Caption с распознаванием речи и возможностью ручного редактирования.",
           "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
           "quote": "As of January 2026, CapCut's Auto Caption (also called \"Recognise Subtitles\") feature uses AI speech-to-text technology to automatically generate subtitles from spoken audio in your video.",
           "passageIndex": 2
         },
         {
           "id": "result",
-          "verdict": "unsupported",
+          "verdict": "instructional",
           "claim": "Вертикальный ролик с отредактированными субтитрами и сохранённым проектом.",
-          "note": "В источнике нет подтверждения конкретно о вертикальном ролике, двух строках текста и сохранении монтажного проекта.",
+          "note": "Это описание результата работы, а не утверждение о функционале CapCut.",
           "sourceUrl": null,
           "quote": null,
           "passageIndex": null
@@ -53,8 +52,8 @@
         {
           "id": "steps.0",
           "verdict": "instructional",
-          "claim": "Инструкция по подготовке аудио и выписке важных слов для проверки после распознавания.",
-          "note": "Это общий совет по работе с аудио и распознаванием, не факт о продукте.",
+          "claim": "Рекомендация прослушать видео, ослабить музыку и выписать имена и цифры для проверки после распознавания.",
+          "note": "Совет по работе с распознаванием, а не описание функции.",
           "sourceUrl": null,
           "quote": null,
           "passageIndex": null
@@ -63,7 +62,7 @@
           "id": "steps.1",
           "verdict": "instructional",
           "claim": "Создание проекта с вертикальным кадром и рекомендация не обрезать речь ради кадра.",
-          "note": "Это методический совет, не подтверждается как функциональность CapCut.",
+          "note": "Общее руководство по монтажу, не факт о функционале.",
           "sourceUrl": null,
           "quote": null,
           "passageIndex": null
@@ -71,7 +70,7 @@
         {
           "id": "steps.2",
           "verdict": "supported",
-          "claim": "В веб-версии CapCut раздел Captions → Auto Captions, на телефоне названия могут отличаться.",
+          "claim": "В веб-версии CapCut раздел для автосубтитров называется Captions → Auto Captions, на телефоне — «Подписи» или «Субтитры» → «Автоматические субтитры», названия зависят от платформы и версии.",
           "note": "",
           "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
           "quote": "Click \"Captions\" on the left panel.",
@@ -80,7 +79,7 @@
         {
           "id": "steps.3",
           "verdict": "supported",
-          "claim": "Выбор языка, звука и запуск генерации субтитров с последующей необходимостью ручной проверки.",
+          "claim": "Выбор языка, звука и запуск генерации субтитров с последующей необходимостью ручной проверки из-за возможных ошибок распознавания.",
           "note": "",
           "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
           "quote": "Choose language and click \"Generate\".",
@@ -89,8 +88,8 @@
         {
           "id": "steps.4",
           "verdict": "supported",
-          "claim": "Ручная проверка и исправление текста субтитров после автоматического распознавания.",
-          "note": "",
+          "claim": "Ручная проверка и исправление ошибок в субтитрах, включая имена, суммы и деление длинных фраз.",
+          "note": "Документ подчёркивает необходимость ручной проверки и редактирования.",
           "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
           "quote": "For best results, always review auto-generated subtitles and make manual corrections where needed.",
           "passageIndex": 25
@@ -98,8 +97,8 @@
         {
           "id": "steps.5",
           "verdict": "unsupported",
-          "claim": "Выбор крупного контрастного шрифта и размещение субтитров с учётом лица и интерфейса соцсети.",
-          "note": "В документации нет подтверждения конкретных рекомендаций по шрифтам и размещению.",
+          "claim": "Выбор крупного контрастного шрифта и размещение субтитров так, чтобы не перекрывать лицо, товар или интерфейс соцсети с единым стилем.",
+          "note": "Документ упоминает возможность редактирования стиля, но не подтверждает конкретные рекомендации по размещению и стилю.",
           "sourceUrl": null,
           "quote": null,
           "passageIndex": null
@@ -107,17 +106,17 @@
         {
           "id": "steps.6",
           "verdict": "supported",
-          "claim": "Проверка синхронизации субтитров с аудио и корректировка длительности блоков в редакторе.",
+          "claim": "Просмотр видео с проверкой совпадения начала и конца субтитров с речью и корректировка длительности блоков при наличии средств редактора.",
           "note": "",
           "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
-          "quote": "Adjust timing, text, or appearance directly in the timeline.",
-          "passageIndex": 16
+          "quote": "Edit timing, text, or style as needed after generation.",
+          "passageIndex": 11
         },
         {
           "id": "steps.7",
           "verdict": "instructional",
-          "claim": "Проверка видео без звука и со звуком, орфографии, синхронизации и экспорт.",
-          "note": "Общие рекомендации по проверке и экспорту, не факт о продукте.",
+          "claim": "Рекомендация смотреть видео без звука и со звуком для проверки понимания, орфографии и синхронизации, затем сохранить и экспортировать.",
+          "note": "Общее руководство по проверке и экспорту, не факт о функционале.",
           "sourceUrl": null,
           "quote": null,
           "passageIndex": null
@@ -125,16 +124,16 @@
         {
           "id": "faq.0",
           "verdict": "supported",
-          "claim": "Можно создать субтитры без ручного набора, но нужна проверка после распознавания.",
+          "claim": "В CapCut можно создать субтитры без ручного набора каждой реплики с помощью Auto Captions, но нужна ручная проверка.",
           "note": "",
           "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
-          "quote": "For best results, always review auto-generated subtitles and make manual corrections where needed.",
-          "passageIndex": 25
+          "quote": "As of January 2026, CapCut's Auto Caption (also called \"Recognise Subtitles\") feature uses AI speech-to-text technology to automatically generate subtitles from spoken audio in your video.",
+          "passageIndex": 2
         },
         {
           "id": "faq.1",
           "verdict": "supported",
-          "claim": "Автоматические субтитры работают на телефоне, вебе и десктопе, кнопки и функции зависят от платформы и версии.",
+          "claim": "Автоматические субтитры работают на телефоне, вебе и десктопе, кнопки и возможности зависят от платформы и версии.",
           "note": "",
           "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
           "quote": "As of January 2026, CapCut's Auto Caption (also called \"Recognise Subtitles\") feature uses AI speech-to-text technology to automatically generate subtitles from spoken audio in your video. Availability and functionality vary by platform. Below is a breakdown by device:",
@@ -143,7 +142,7 @@
         {
           "id": "faq.2",
           "verdict": "supported",
-          "claim": "Автоматическое распознавание может ошибаться из-за шума, скорости речи и редких имён.",
+          "claim": "Автоматическое распознавание может ошибаться из-за шума, быстрой речи и редких имён, требуется сверка с аудио.",
           "note": "",
           "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
           "quote": "For best results, always review auto-generated subtitles and make manual corrections where needed.",
@@ -152,25 +151,25 @@
         {
           "id": "faq.3",
           "verdict": "supported",
-          "claim": "Проверка времени появления субтитров со звуком и корректировка на временной шкале.",
+          "claim": "Проверка своевременности появления субтитров делается воспроизведением со звуком и корректировкой тайминга в редакторе.",
           "note": "",
           "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
-          "quote": "Adjust timing, text, or appearance directly in the timeline.",
-          "passageIndex": 16
+          "quote": "Edit timing, text, or style as needed after generation.",
+          "passageIndex": 11
         },
         {
           "id": "limitations.0",
           "verdict": "supported",
-          "claim": "Меню и функции CapCut зависят от платформы, региона и версии.",
+          "claim": "Меню и функции CapCut зависят от платформы, региона и версии, нужно сверяться с официальной справкой.",
           "note": "",
           "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
-          "quote": "As of January 2026, CapCut's Auto Caption (also called \"Recognise Subtitles\") feature uses AI speech-to-text technology to automatically generate subtitles from spoken audio in your video. Availability and functionality vary by platform. Below is a breakdown by device:",
-          "passageIndex": 3
+          "quote": "However, advanced features like speaker differentiation, punctuation refinement, or batch export of .srt files may only be available on Desktop or Web, depending on your region and app version.",
+          "passageIndex": 24
         },
         {
           "id": "limitations.1",
           "verdict": "supported",
-          "claim": "Автоматическое распознавание может ошибаться, нужна финальная проверка человеком.",
+          "claim": "Автоматическое распознавание не идеально, финальную проверку всегда делает человек.",
           "note": "",
           "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
           "quote": "For best results, always review auto-generated subtitles and make manual corrections where needed.",
@@ -180,7 +179,7 @@
           "id": "limitations.2",
           "verdict": "instructional",
           "claim": "Пример таймкодов вымышлен и не измерен на реальном видео.",
-          "note": "Это предупреждение, не факт о продукте.",
+          "note": "Комментарий о примере, не факт о продукте.",
           "sourceUrl": null,
           "quote": null,
           "passageIndex": null
@@ -188,7 +187,7 @@
         {
           "id": "limitations.3",
           "verdict": "instructional",
-          "claim": "Нет гарантий охватов, продаж или экономии времени.",
+          "claim": "Нет гарантий охватов, продаж или экономии времени от метода.",
           "note": "Общее предупреждение, не факт о продукте.",
           "sourceUrl": null,
           "quote": null,
@@ -392,7 +391,7 @@
         {
           "title": "Автоматические субтитры — официальная инструкция CapCut",
           "url": "https://www.capcut.com/help/how-to-recognise-subtitles",
-          "sha256": "957ba5de84ef64c86bab6f713ebea230fad77b4545d40a05b21ba23d52086c9a",
+          "sha256": "a7ac61bf9afd3bd5384f16b10f9147cd170a8b9f54411c8012446ed26486a77f",
           "readableChars": 2462,
           "loaded": true,
           "mode": "live_official_page",
@@ -416,7 +415,7 @@
         {
           "id": "result",
           "verdict": "instructional",
-          "claim": "Описание результата работы — монтажные карточки и вертикальные ролики",
+          "claim": "Описание результата работы — пять монтажных карточек и роликов",
           "note": "Это описание желаемого результата, а не подтверждение конкретной функции.",
           "sourceUrl": null,
           "quote": null,
@@ -425,7 +424,7 @@
         {
           "id": "steps.0",
           "verdict": "instructional",
-          "claim": "Получение и корректировка расшифровки с таймкодами",
+          "claim": "Получение расшифровки с таймкодами и ручная корректировка",
           "note": "Общее руководство по работе с расшифровкой, без подтверждения конкретного инструмента.",
           "sourceUrl": null,
           "quote": null,
@@ -444,7 +443,7 @@
           "id": "steps.2",
           "verdict": "instructional",
           "claim": "Использование ChatGPT для выбора фрагментов с таймкодами",
-          "note": "Рекомендация по работе с ИИ, без подтверждения автоматического контроля таймкодов.",
+          "note": "Рекомендация по работе с моделью, без подтверждения автоматического контроля таймкодов.",
           "sourceUrl": null,
           "quote": null,
           "passageIndex": null
@@ -453,7 +452,7 @@
           "id": "steps.3",
           "verdict": "instructional",
           "claim": "Ручная проверка выбранных интервалов в исходном видео",
-          "note": "Общее правило проверки, не подтверждающее автоматизацию.",
+          "note": "Процесс контроля качества, не подтверждающий автоматизацию.",
           "sourceUrl": null,
           "quote": null,
           "passageIndex": null
@@ -461,8 +460,8 @@
         {
           "id": "steps.4",
           "verdict": "instructional",
-          "claim": "Создание текстовых подводок и визуальных акцентов для эпизодов",
-          "note": "Совет по оформлению, без подтверждения конкретной функции.",
+          "claim": "Создание текстовой подводки и визуального акцента для каждого эпизода",
+          "note": "Рекомендация по оформлению, без подтверждения автоматической генерации.",
           "sourceUrl": null,
           "quote": null,
           "passageIndex": null
@@ -471,7 +470,7 @@
           "id": "steps.5",
           "verdict": "instructional",
           "claim": "Монтаж вертикальных роликов с корректировкой кадра и музыки",
-          "note": "Общее описание монтажа, без подтверждения конкретных возможностей редактора.",
+          "note": "Общее описание монтажа, без подтверждения конкретных функций редактора.",
           "sourceUrl": null,
           "quote": null,
           "passageIndex": null
@@ -479,7 +478,7 @@
         {
           "id": "steps.6",
           "verdict": "supported",
-          "claim": "В CapCut есть функция автоматического распознавания субтитров с необходимостью ручной проверки и исправления ошибок, расположение команд зависит от устройства и версии",
+          "claim": "В CapCut есть функция автоматического распознавания субтитров с необходимостью ручной проверки и исправления",
           "note": "",
           "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
           "quote": "As of January 2026, CapCut's Auto Caption (also called \"Recognise Subtitles\") feature uses AI speech-to-text technology to automatically generate subtitles from spoken audio in your video.",
@@ -488,26 +487,26 @@
         {
           "id": "steps.7",
           "verdict": "instructional",
-          "claim": "Проверка готовых роликов по звуку, таймкодам, субтитрам и разрешениям на использование",
-          "note": "Общее руководство по контролю качества, без подтверждения конкретных функций.",
+          "claim": "Финальная проверка видео по звуку, таймкодам, субтитрам и разрешениям",
+          "note": "Общее руководство по контролю качества, без подтверждения автоматизации.",
           "sourceUrl": null,
           "quote": null,
           "passageIndex": null
         },
         {
           "id": "faq.0",
-          "verdict": "instructional",
-          "claim": "ChatGPT помогает с отбором и текстами, но для монтажа нужен видеоредактор или отдельная функция",
-          "note": "Общее разъяснение, не подтверждающее наличие автоматического монтажа в ChatGPT.",
-          "sourceUrl": null,
-          "quote": null,
-          "passageIndex": null
+          "verdict": "supported",
+          "claim": "ChatGPT помогает с отбором эпизодов и текстами, но для вырезки и экспорта видео нужен видеоредактор или отдельная функция",
+          "note": "Документация не подтверждает автоматическую нарезку видео ChatGPT, что соответствует заявлению.",
+          "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
+          "quote": "05 : 09 : 11 : 21 Claim your Black Friday deal on CapCut Desktop—limited spots!",
+          "passageIndex": 0
         },
         {
           "id": "faq.1",
           "verdict": "instructional",
           "claim": "Точные таймкоды берутся из исходного видео или редактора и проверяются вручную",
-          "note": "Общее правило, не подтверждающее автоматический способ получения таймкодов из текста.",
+          "note": "Общее правило, не подтверждаемое конкретным продуктом.",
           "sourceUrl": null,
           "quote": null,
           "passageIndex": null
@@ -515,7 +514,7 @@
         {
           "id": "faq.2",
           "verdict": "supported",
-          "claim": "CapCut документирует функцию Auto Captions для разных платформ, с вариациями в названиях и расположении команд, после генерации субтитры нужно проверять и исправлять вручную",
+          "claim": "CapCut поддерживает автоматические субтитры (Auto Captions) на разных платформах с необходимостью ручной корректировки",
           "note": "",
           "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
           "quote": "As of January 2026, CapCut's Auto Caption (also called \"Recognise Subtitles\") feature uses AI speech-to-text technology to automatically generate subtitles from spoken audio in your video.",
@@ -524,7 +523,7 @@
         {
           "id": "faq.3",
           "verdict": "instructional",
-          "claim": "Рекомендуемый хронометраж для фрагментов 20–35 секунд, но это не универсальный стандарт",
+          "claim": "Рекомендуемый хронометраж для фрагментов — 20–35 секунд, но это не универсальное правило",
           "note": "Рекомендация, а не утверждение о функции.",
           "sourceUrl": null,
           "quote": null,
@@ -552,15 +551,15 @@
           "id": "limitations.2",
           "verdict": "supported",
           "claim": "Функции, названия меню и условия использования CapCut могут меняться в зависимости от версии и региона",
-          "note": "",
+          "note": "Документация указывает на вариативность функций и интерфейса.",
           "sourceUrl": "https://www.capcut.com/help/how-to-recognise-subtitles",
-          "quote": "As of January 2026, CapCut's Auto Caption (also called \"Recognise Subtitles\") feature uses AI speech-to-text technology to automatically generate subtitles from spoken audio in your video. Availability and functionality vary by platform. Below is a breakdown by device:",
-          "passageIndex": 3
+          "quote": "However, advanced features like speaker differentiation, punctuation refinement, or batch export of .srt files may only be available on Desktop or Web, depending on your region and app version.",
+          "passageIndex": 24
         },
         {
           "id": "limitations.3",
           "verdict": "instructional",
-          "claim": "ИИ может ошибаться в подборе цитат, нужна проверка с исходным интервью",
+          "claim": "ИИ может ошибаться в подборе цитат, требуется проверка с исходным интервью",
           "note": "Общее предупреждение, не факт о продукте.",
           "sourceUrl": null,
           "quote": null,
