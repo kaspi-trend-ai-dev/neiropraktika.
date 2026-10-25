@@ -5,7 +5,9 @@ export const OFFICIAL_HOSTS=new Set([
  'www.capcut.com','capcut.com',
  'help.canva.com','www.canva.com',
  'helpx.adobe.com','support.google.com','developers.google.com',
- 'docs.github.com','support.microsoft.com','help.instagram.com'
+ 'docs.github.com','support.microsoft.com','help.instagram.com',
+ 'seed.bytedance.com','www.anthropic.com','anthropic.com',
+ 'suno.com','www.suno.com','elevenlabs.io','www.elevenlabs.io','help.runwayml.com'
 ]);
 export function isOfficialUrl(raw){
  try{
