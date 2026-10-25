@@ -1,0 +1,52 @@
+[
+  {
+    "id": "chatgpt-ucheba",
+    "intent": "Как использовать ChatGPT для учебы",
+    "title": "Как использовать ChatGPT для учёбы: 12 полезных способов и примеры запросов"
+  },
+  {
+    "id": "chatgpt-perevod",
+    "intent": "Как переводить тексты через ChatGPT",
+    "title": "Как переводить тексты через ChatGPT: инструкция с примерами"
+  },
+  {
+    "id": "chatgpt-excel",
+    "intent": "Как использовать ChatGPT в Excel",
+    "title": "ChatGPT для Excel: как писать формулы и разбирать таблицы"
+  },
+  {
+    "id": "chatgpt-pismo",
+    "intent": "Как написать деловое письмо с ChatGPT",
+    "title": "Как написать деловое письмо через ChatGPT: готовые промпты"
+  },
+  {
+    "id": "chatgpt-plan",
+    "intent": "Как сделать план на день через ChatGPT",
+    "title": "Как составить план дня в ChatGPT: инструкция и шаблон"
+  },
+  {
+    "id": "chatgpt-kartinki",
+    "intent": "Как создавать изображения с ChatGPT",
+    "title": "Как создавать изображения в ChatGPT: от идеи до готового запроса"
+  },
+  {
+    "id": "chatgpt-analiz",
+    "intent": "Как анализировать текст с помощью ChatGPT",
+    "title": "Как анализировать документы в ChatGPT: примеры заданий и проверка"
+  },
+  {
+    "id": "chatgpt-posty",
+    "intent": "Как написать пост в Instagram через ChatGPT",
+    "title": "Как написать пост для Instagram с ChatGPT: структура и промпты"
+  },
+  {
+    "id": "chatgpt-sobesedovanie",
+    "intent": "Как подготовиться к собеседованию через ChatGPT",
+    "title": "Как подготовиться к собеседованию с ChatGPT: тренировка вопросов"
+  },
+  {
+    "id": "chatgpt-biznes-plan",
+    "intent": "Как написать бизнес план через ChatGPT",
+    "title": "Как составить бизнес-план через ChatGPT: пошаговый пример"
+  }
+]
